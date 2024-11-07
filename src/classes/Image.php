@@ -4,7 +4,7 @@ namespace Iutnc\Nrv\classes;
 
 use Iutnc\Nrv\exceptions\InvalidPropertyNameException;
 
-class Image implements ReadableFromDB
+class Image implements ReadableFromDB, Renderable
 {
     private int $id;
     private string $filetype;

@@ -4,7 +4,7 @@ namespace Iutnc\Nrv\classes;
 
 use Iutnc\Nrv\exceptions\InvalidPropertyNameException;
 
-class Artiste implements ReadableFromDB
+class Artiste implements ReadableFromDB, Renderable
 {
     private int $id;
     private string $nom;
