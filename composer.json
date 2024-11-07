@@ -6,5 +6,7 @@
             "Iutnc\\Nrv\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }
