@@ -1,0 +1,10 @@
+{
+    "name": "iutnc/nrv",
+    "description": "sae",
+    "autoload": {
+        "psr-4": {
+            "Iutnc\\Nrv\\": "src/"
+        }
+    },
+    "require": {}
+}
