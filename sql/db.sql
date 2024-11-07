@@ -3,10 +3,10 @@ SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS Soiree;
 CREATE TABLE Soiree (
     id  INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nomSoiree VARCHAR(30),
-    ThemeSoiree VARCHAR(30),
-    dateSoiree DATE,
-    tarifSoiree DOUBLE(8,2),
+    nom VARCHAR(30),
+    theme VARCHAR(30),
+    date DATE,
+    tarif DOUBLE(8,2),
     id_lieu INT(4)
 )ENGINE=INNODB;
 
@@ -14,9 +14,9 @@ CREATE TABLE Soiree (
 DROP TABLE IF EXISTS Lieu;
 CREATE TABLE Lieu (
     id INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nomLieu VARCHAR(30),
-    adresselieu VARCHAR(30),
-    villeLieu VARCHAR(30),
+    nom VARCHAR(30),
+    adresse VARCHAR(30),
+    ville VARCHAR(30),
     nbPLaceAssise INT(6),
     nbPlaceDebout INT(6)
 )ENGINE=INNODB;
@@ -25,12 +25,12 @@ CREATE TABLE Lieu (
 DROP TABLE IF EXISTS Spectacle;
 CREATE TABLE Spectacle (
     id INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    titreSpectacle VARCHAR(30),
-    descriptionSpectacle VARCHAR(30),
-    heureSpectacle DATE,
-    dureeSpectacle VARCHAR(30),
+    titre VARCHAR(30),
+    description VARCHAR(30),
+    heure DATE,
+    duree VARCHAR(30),
     libelleStyle VARCHAR(90),
-    videoSpectacle VARCHAR(90)
+    video VARCHAR(90)
 )ENGINE=INNODB;
 
 
@@ -39,8 +39,8 @@ CREATE TABLE Spectacle (
 DROP TABLE IF EXISTS Artiste;
 CREATE TABLE Artiste (
     id INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    NomArtiste VARCHAR(30),
-    infoArtiste VARCHAR(30)
+    Nom VARCHAR(30),
+    info VARCHAR(30)
 )ENGINE=INNODB;
 
 
