@@ -26,6 +26,7 @@ class Dispatcher
     <body>
         <div>
         <a href="?action=signup">Creer un compte</a> <br> <a href="?action=login"> Se connecter</a> <br> <a href="?action=logout"> Se deconnecter</a>
+        
 </div>
        $html
     </body>

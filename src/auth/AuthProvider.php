@@ -21,7 +21,7 @@ class AuthProvider
         $hash = $user->passwd;
 
         if (password_verify($password, $hash)) {
-            $_SESSION['user'] = serialize($user);
+            $_SESSION['user'] = serialize($user->id);
         }
         else {
             throw new AuthException("Auth error : invalid credentials");
@@ -31,10 +31,11 @@ class AuthProvider
 
     public static function getSignedInUser() : User {
         if (isset($_SESSION["user"])) {
-            return unserialize($_SESSION["user"]);
-        } else {
-            throw new AuthException("User not connected");
+            $user = NrvRepository::getInstance()->getUserById(unserialize($_SESSION["user"]));
+            if ($user) return $user;
         }
+        throw new AuthException("User not connected");
+
     }
 
 

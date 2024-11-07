@@ -38,7 +38,7 @@ HTML;
             }
         } catch (AuthException $e) {
             try {
-                $user = AuthProvider::signin($_POST["userEmail"], $_POST["userPasswd"]);
+                $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
                 unset($_SESSION['playlist']);
                 return "Rebonjour " . $user->email . "<br><a href=''>Acceuil</a>";
             } catch (AuthException $e) {

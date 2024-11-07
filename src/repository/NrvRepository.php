@@ -30,7 +30,18 @@ class NrvRepository
     //TODO
 
     public function getUserByEmail(string $email) : User|false {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = $email");
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE email = '$email'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return User::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
+
+    public function getUserById(int $id) : User|false {
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE id = $id");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         if ($result && count($result) == 1) {
@@ -42,7 +53,7 @@ class NrvRepository
 
     public function addUser(User $user) : void
     {
-        $stmt = $this->pdo->prepare("INSERT INTO user (id, email, passwd, role) VALUES (NULL, $user->email, $user->passwd, $user->role)");
+        $stmt = $this->pdo->prepare("INSERT INTO user (id, email, passwd, role) VALUES (NULL, '$user->email', '$user->passwd', $user->role)");
         $stmt->execute();
     }
 }

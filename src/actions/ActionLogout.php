@@ -11,10 +11,11 @@ class ActionLogout extends Action
 
     public function get(): string
     {
+
         try {
             $user = AuthProvider::getSignedInUser();
 
-            return RendererFactory::getRenderer($user)->render() . <<<html
+            return  <<<html
 <form action="?action=logout" method="POST">
     <input type="submit" value="Se deconecter">
 </form>
@@ -32,7 +33,6 @@ html;
     public function post(): string
     {
         unset($_SESSION['user']);
-        unset($_SESSION['playlist']);
         return <<<html
 <p> user disconected</p>
 html;
