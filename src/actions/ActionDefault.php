@@ -2,7 +2,7 @@
 
 namespace Iutnc\Nrv\actions;
 
-class DefaultAction extends Action
+class ActionDefault extends Action
 {
 
     public function get(): string

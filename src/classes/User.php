@@ -6,6 +6,8 @@ use Iutnc\Nrv\exceptions\InvalidPropertyNameException;
 
 class User implements ReadableFromDB, Renderable
 {
+    public static int $ROLE_ADMIN = 5;
+
     private int $id;
     private string $email;
     private string $passwd;
@@ -41,4 +43,5 @@ class User implements ReadableFromDB, Renderable
             throw new InvalidPropertyNameException($name);
         }
     }
+
 }
