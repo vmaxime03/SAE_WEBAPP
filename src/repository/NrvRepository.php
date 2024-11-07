@@ -2,6 +2,7 @@
 
 namespace Iutnc\Nrv\repository;
 
+use Iutnc\Nrv\classes\Soiree;
 use Iutnc\Nrv\classes\User;
 use PDO;
 
@@ -55,5 +56,17 @@ class NrvRepository
     {
         $stmt = $this->pdo->prepare("INSERT INTO user (id, email, passwd, role) VALUES (NULL, '$user->email', '$user->passwd', $user->role)");
         $stmt->execute();
+    }
+
+    public function getSoireebyId($id) : Soiree|false
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE id = '$id'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Soiree::createFromDb($result[0]);
+        } else {
+            return false;
+        }
     }
 }
