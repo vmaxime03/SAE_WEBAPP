@@ -25,9 +25,9 @@ class Dispatcher
     </head> 
     <body>
         <div>
-        <a href="?action=signup">Creer un compte</a> <br> <a href="?action=login"> Se connecter</a> <br> <a href="?action=logout"> Se deconnecter</a>
-        
-</div>
+        <a href="?action=signup">Creer un compte</a> <br> <a href="?action=login"> Se connecter</a> <br> <a href="?action=logout"> Se deconnecter</a> <br>
+        <a href="?action=afficherSoirees">Afficher les soirées</a>
+        </div>
        $html
     </body>
 </html>
