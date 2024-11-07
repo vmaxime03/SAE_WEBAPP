@@ -4,24 +4,28 @@ namespace Iutnc\Nrv\classes;
 
 use Iutnc\Nrv\exceptions\InvalidPropertyNameException;
 
-class User implements ReadableFromDB
+class Soiree implements ReadableFromDB
 {
     private int $id;
-    private string $email;
-    private string $passwd;
-    private int $role;
+    private string $nom;
+    private string $theme;
+    private string $date;
+    private double $tarif;
+    private int $idieu;
 
-    public function __construct(int $id, string $email, string $passwd, int $role)
+    public function __construct(int $id, string $nom, string $theme, string $date, int $tarif, int $idieu)
     {
         $this->id = $id;
-        $this->email = $email;
-        $this->passwd = $passwd;
-        $this->role = $role;
+        $this->nom = $nom;
+        $this->theme = $theme;
+        $this->date = $date;
+        $this->tarif = $tarif;
+        $this->idieu = $idieu;
     }
 
-    public static function createFromDb(mixed $obj) : User
+    public static function createFromDb(mixed $obj) : Soiree
     {
-        return new User($obj->id, $obj->email, $obj->passwd, $obj->role);
+        return new Soiree($obj->id, $obj->nom, $obj->theme, $obj->date, $obj->tarif, $obj->id_ieu);
     }
 
     public function __get(string $name)
