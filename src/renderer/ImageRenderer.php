@@ -17,7 +17,11 @@ class ImageRenderer implements Renderer
     {
         $img = base64_encode($this->toRender->data);
         return <<<HTML
-     <img src="data:{$this->toRender->filetype};base64,{$img}"/>
+        <div class = 'image'>
+            <img src="data:{$this->toRender->filetype};base64,{$img}"/>
+            <p>description : {$this->toRender->infos}</p>
+        </div>
+    
 HTML;
 
     }

@@ -16,7 +16,12 @@ class LieuRenderer implements Renderer
     public function render(): string
     {
         return <<<HTML
-
+        <div class = 'lieu'>
+            <p>nom : {$this->toRender->nom}</p>
+            <p>infos : {$this->toRender->adresse}</p>
+            <p>adresse : {$this->toRender->ville}</p>
+            <p>nombre de places (assises/debout): {$this->toRender->nbPlaceAssise}/{$this->toRender->nbPlaceDebout}</p>
+        </div>
 HTML;
     }
 }

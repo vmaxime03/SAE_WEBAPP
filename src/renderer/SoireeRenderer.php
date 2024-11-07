@@ -17,7 +17,13 @@ class SoireeRenderer implements Renderer
     public function render(): string
     {
         return <<<HTML
-
+        <div class = 'soiree'>
+            <p>nom : {$this->toRender->nom}</p>
+            <p>theme : {$this->toRender->theme}</p>
+            <p>date : {$this->toRender->ville}</p>
+            <p>tarif : {$this->toRender->tarif}</p>
+        </div>
 HTML;
+        //TODO utiliser methodes getHeure(), getLieu() pour ajouter l'heure et le lieu
     }
 }

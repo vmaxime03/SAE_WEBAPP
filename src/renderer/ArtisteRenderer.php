@@ -16,7 +16,10 @@ class ArtisteRenderer implements Renderer
     public function render(): string
     {
         return <<<HTML
-
+        <div class = 'artiste'>
+            <p>nom : {$this->toRender->nom}</p>
+            <p>infos : {$this->toRender->infos}</p>
+        </div>
 HTML;
     }
 }

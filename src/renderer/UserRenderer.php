@@ -17,7 +17,10 @@ class UserRenderer implements Renderer
     public function render(): string
     {
         return <<<HTML
-
+        <div class = 'user'>
+            <p>email : {$this->toRender->email}</p>
+            <p>role : {$this->toRender->role}</p>
+        </div>
 HTML;
     }
 }
