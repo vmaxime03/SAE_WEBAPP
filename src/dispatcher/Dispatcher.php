@@ -45,7 +45,7 @@ class Dispatcher
             "logout" => new ActionLogout(),
             "afficherSoirees" => new ActionAfficherSoirees(),
             "accueilUser" => new ActionAccueilUser(),
-            "accueilUser" => new ActionAccueilUser(),
+            "accueilAdmin" => new ActionAccueilAdmin(),
             "accueilStaff" => new ActionAccueilStaff(),
             default => new ActionDefault()
         })->execute());

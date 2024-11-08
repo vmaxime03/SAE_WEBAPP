@@ -8,7 +8,7 @@ use Iutnc\Nrv\exceptions\AuthException;
 class ActionAccueilUser extends Action
 {
     private string $form = <<<HTML
-    <form action="?action=accueil" method="POST">
+    <form action="?action=accueilUser" method="POST">
         <nav>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
