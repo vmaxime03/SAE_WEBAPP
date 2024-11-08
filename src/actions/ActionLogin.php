@@ -8,12 +8,12 @@ use Iutnc\Nrv\exceptions\AuthException;
 class ActionLogin extends Action
 {
     private string $form = <<<HTML
-<form action="?action=login" method="POST">
-            <input type="email" name="email" placeholder="email">
-            <input type="password" name="passwd" placeholder="mot de passe">
-            <input type="submit" value="Confirmer">
-</form>
-HTML;
+    <form action="?action=login" method="POST">
+                <input type="email" name="email" placeholder="email">
+                <input type="password" name="passwd" placeholder="mot de passe">
+                <input type="submit" value="Confirmer">
+    </form>
+    HTML;
 
     public function get(): string
     {

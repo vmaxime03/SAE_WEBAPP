@@ -15,27 +15,24 @@ class ActionLogout extends Action
         try {
             $user = AuthProvider::getSignedInUser();
 
-            return  <<<html
-<form action="?action=logout" method="POST">
-    <input type="submit" value="Se deconecter">
-</form>
+            return  <<<HTML
+            <form action="?action=logout" method="POST">
+                <input type="submit" value="Se deconecter">
+            </form>
+            HTML;
 
-html;
         } catch (AuthException $e) {
-            return <<<html
-<p>No user Conected</p>
-html;
+            return <<<HTML
+                <p>No user Conected</p>
+            HTML;
         }
-
-
     }
 
     public function post(): string
     {
         unset($_SESSION['user']);
-        return <<<html
-<p> user disconected</p>
-html;
-
+        return <<<HTML
+            <p> user disconected</p>
+        HTML;
     }
 }
