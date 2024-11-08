@@ -31,7 +31,7 @@ class ActionLogout extends Action
 
     public function post(): string
     {
-        unset($_SESSION['user']);
+        session_destroy();
         return <<<HTML
             <p> user disconected</p>
             <nav>
