@@ -25,3 +25,4 @@ class ActionAccueilAdmin extends Action
     {
         return "Hello World!";
     }
+}
