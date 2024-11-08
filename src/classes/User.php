@@ -50,10 +50,10 @@ class User implements ReadableFromDB, Renderable
     {
         $html = '';
         switch ($role) {
-            case "ROLE_ADMIN":
+            case 100:
                 $html = "<br><a href='?action=accueilAdmin'>Accueil</a>";
                 break;
-            case "ROLE_STAFF":
+            case 5:
                 $html = "<br><a href='?action=accueilStaff'>Accueil</a>";
                 break;
             default:

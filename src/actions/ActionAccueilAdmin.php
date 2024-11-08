@@ -25,10 +25,11 @@ class ActionAccueilAdmin extends Action
     </form>
     HTML;
         } catch (AuthException $e) {
-            return <<<HTML
+            $user = AuthProvider::getSignedInUser();
+            $html = <<<HTML
                 <p>Vous n'avez pas les droits pour accéder à cette page</p>
-                <a href="?action=accueilUser">Retour à la page d'accueil</a>
             HTML;
+            return $html . $user->getRoleUser($user->role);
         }
     }
 
