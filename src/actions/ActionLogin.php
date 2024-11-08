@@ -4,6 +4,7 @@ namespace Iutnc\Nrv\actions;
 
 use Iutnc\Nrv\auth\AuthProvider;
 use Iutnc\Nrv\exceptions\AuthException;
+use Iutnc\Nrv\classes\User;
 
 class ActionLogin extends Action
 {
@@ -14,6 +15,8 @@ class ActionLogin extends Action
                 <input type="submit" value="Confirmer">
     </form>
     HTML;
+
+
 
     public function get(): string
     {
@@ -29,18 +32,16 @@ class ActionLogin extends Action
 
         try {
             $user = AuthProvider::getSignedInUser();
-            echo var_dump($user);
             if ($user->email === $_POST["email"] &&
                 password_verify($_POST['passwd'], $user->passwd)) {
-                return "Vous etes deja connecté <br><a href=''>Accueil</a>";
+                return "Vous êtes déjà connecté " . $user->getRoleUser($user->role);
             } else {
                 throw new AuthException();
             }
         } catch (AuthException $e) {
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
-                unset($_SESSION['playlist']);
-                return "Rebonjour " . $user->email . "<br><a href='?action=accueil'>Accueil</a>";
+                return "Rebonjour " . $user->email . $user->getRoleUser($user->role);
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }

@@ -13,6 +13,10 @@ class Image implements ReadableFromDB, Renderable
 
     public function __construct(int $id, string $filetype, string $description, string $data)
     {
+        $this->id = $id;
+        $this->filetype = $filetype;
+        $this->description = $description;
+        $this->data = $data;
     }
 
     public static function createFromDb(mixed $obj): Image

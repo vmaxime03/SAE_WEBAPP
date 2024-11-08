@@ -6,7 +6,9 @@ use Iutnc\Nrv\exceptions\InvalidPropertyNameException;
 
 class User implements ReadableFromDB, Renderable
 {
-    public static int $ROLE_ADMIN = 5;
+    public static int $ROLE_ADMIN = 100;
+    public static int $ROLE_USER = 1;
+    public static int $ROLE_STAFF = 5;
 
     private int $id;
     private string $email;
@@ -42,6 +44,23 @@ class User implements ReadableFromDB, Renderable
         } else {
             throw new InvalidPropertyNameException($name);
         }
+    }
+
+    public function getRoleUser(int $role): string
+    {
+        $html = '';
+        switch ($role) {
+            case "ROLE_ADMIN":
+                $html = "<br><a href='?action=accueilAdmin'>Accueil</a>";
+                break;
+            case "ROLE_STAFF":
+                $html = "<br><a href='?action=accueilStaff'>Accueil</a>";
+                break;
+            default:
+                $html = "<br><a href='?action=accueilUser'>Accueil</a>";
+                break;
+        }
+        return $html;
     }
 
 }

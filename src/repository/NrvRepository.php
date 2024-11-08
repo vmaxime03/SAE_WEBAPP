@@ -2,7 +2,9 @@
 
 namespace Iutnc\Nrv\repository;
 
+
 use Iutnc\Nrv\classes\Artiste;
+use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\classes\Lieu;
 use Iutnc\Nrv\classes\Soiree;
 use Iutnc\Nrv\classes\Spectacle;
@@ -27,6 +29,14 @@ class NrvRepository
         return self::$instance;
     }
 
+    /**
+     * methode utilisée dans le programme insererImages pour inserer les images de test dans la BD
+     * @return PDO
+     */
+    public function getPDO(): PDO
+    {
+        return $this->pdo;
+    }
     public static function setConfig(string $file): void {
         self::$config = parse_ini_file($file);
     }
@@ -98,13 +108,35 @@ class NrvRepository
             return false;
         }
     }
-    public function getImageSoireeById($id) : Soiree|false
+    public function getLieuById($id) : Lieu|false
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE image.id = '$id'");
+        $stmt = $this->pdo->prepare("SELECT * FROM lieu WHERE id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         if ($result && count($result) == 1) {
-            return Soiree::createFromDb($result[0]);
+            return Lieu::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
+    public function getSpectableByIdSoiree($id_soiree) : Spectacle|false
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM spectacle WHERE id_soiree = '$id_soiree'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Spectacle::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
+    public function getImageByIdLieu($idLieu) : Image|false
+    {
+        $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, lieu2image WHERE image.id = lieu2image.id_image AND lieu2image.id_lieu = '$idLieu'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Image::createFromDb($result[0]);
         } else {
             return false;
         }

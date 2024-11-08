@@ -2,13 +2,10 @@
 
 namespace Iutnc\Nrv\actions;
 
-use Iutnc\Nrv\auth\AuthProvider;
-use Iutnc\Nrv\exceptions\AuthException;
-
-class ActionAccueil extends Action
+class ActionAccueilStaff extends Action
 {
     private string $form = <<<HTML
-    <form action="?action=accueil" method="POST">
+    <form action="?action=accueilStaff" method="POST">
         <nav>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
@@ -25,7 +22,5 @@ class ActionAccueil extends Action
     {
         return "Hello World!";
     }
-
-
 
 }
