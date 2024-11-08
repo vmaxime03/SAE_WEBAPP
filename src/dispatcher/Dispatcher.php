@@ -39,6 +39,7 @@ class Dispatcher
             "login" => new ActionLogin(),
             "logout" => new ActionLogout(),
             "afficherSoirees" => new ActionAfficherSoirees(),
+            "accueil" => new ActionAccueil(),
             default => new ActionDefault()
         })->execute());
 
