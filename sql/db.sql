@@ -31,7 +31,8 @@ CREATE TABLE Spectacle (
                            duree VARCHAR(30),
                            libelleStyle VARCHAR(90),
                            video VARCHAR(200),
-                           id_soiree INT(4)
+                           id_soiree INT(4),
+                        est_annule BOOLEAN default 0
 )ENGINE=INNODB;
 
 

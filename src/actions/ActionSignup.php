@@ -11,6 +11,7 @@ class ActionSignup extends Action
     <form action="?action=signup" method="POST">
                 <input type="email" name="email" placeholder="email">
                 <input type="password" name="passwd" placeholder="mot de passe">
+                <input type="password" name="passwd2" placeholder="confirmer mot de passe">
                 <input type="submit" value="Confirmer">
     </form>
     HTML;
@@ -23,13 +24,17 @@ class ActionSignup extends Action
 
     public function post(): string
     {
-        if (!(isset($_POST['email']) && isset($_POST['passwd'])) ||
-            $_POST['email'] == "" || $_POST['passwd'] == "") {
+        if (!(isset($_POST['email']) && isset($_POST['passwd']) && isset($_POST['passwd2'])) ||
+            $_POST['email'] == "" || $_POST['passwd'] == "" || $_POST['passwd2'] == "") {
             return $this->form . "entrée manquante ";
         }
 
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             return $this->form . "email invalide";
+        }
+
+        if ($_POST['passwd'] != $_POST['passwd2']) {
+            return $this->form . "les deux mot de passe ne sont pas identique";
         }
 
         try {

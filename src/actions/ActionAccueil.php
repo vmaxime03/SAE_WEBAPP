@@ -21,6 +21,11 @@ class ActionAccueil extends Action
         return $this->form;
     }
 
+    public function post(): string
+    {
+        return "Hello World!";
+    }
+
 
 
 }

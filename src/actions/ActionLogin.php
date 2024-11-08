@@ -40,7 +40,7 @@ class ActionLogin extends Action
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
                 unset($_SESSION['playlist']);
-                return "Rebonjour " . $user->email . "<br><a href=''>Accueil</a>";
+                return "Rebonjour " . $user->email . "<br><a href='?action=accueil'>Accueil</a>";
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }
