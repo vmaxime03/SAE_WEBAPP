@@ -7,6 +7,7 @@ use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
 use Iutnc\Nrv\actions\ActionSignup;
+use Iutnc\Nrv\actions\ActionAccueil;
 
 class Dispatcher
 {
