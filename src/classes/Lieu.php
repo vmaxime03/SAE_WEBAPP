@@ -26,7 +26,7 @@ class Lieu implements ReadableFromDB, Renderable
 
     public static function createFromDb(mixed $obj): Lieu
     {
-        return new Lieu($obj->id, $obj->nom, $obj->addresse, $obj->ville, $obj->nbPlaceAssise, $obj->nbPlaceDebout);
+        return new Lieu($obj->id, $obj->nom, $obj->adresse, $obj->ville, $obj->nbPLaceAssise, $obj->nbPlaceDebout);
     }
 
     public function __get(string $name)

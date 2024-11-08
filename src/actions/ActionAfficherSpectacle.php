@@ -26,19 +26,7 @@ class ActionAfficherSpectacle extends Action {
         return "Hello World!";
     }
 
-    /**
-     * public function getSpectableByIdsoiree($id_soiree) : Spectacle|false
-     * {
-     * $stmt = $this->pdo->prepare("SELECT * FROM spectacle WHERE id_soiree = '$id_soiree'");
-     * $stmt->execute();
-     * $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-     * if ($result && count($result) == 1) {
-     * return Spectacle::createFromDb($result[0]);
-     * } else {
-     * return false;
-     * }
-     * }
-     */
+
 
 
 }
