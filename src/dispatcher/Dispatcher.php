@@ -17,22 +17,19 @@ class Dispatcher
     }
 
     private function renderPage(String $html) : void {
-        echo <<<END
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <title>NRV</title>
-    </head> 
-    <body>
-        <div>
-        <a href="?action=signup">Creer un compte</a> <br> <a href="?action=login"> Se connecter</a> <br> <a href="?action=logout"> Se deconnecter</a> <br>
-        <a href="?action=afficherSoirees">Afficher les soirées</a>
-        </div>
-       $html
-    </body>
-</html>
-END;
+        echo <<<HTML
+        <!DOCTYPE html>
+        <html lang="fr">
+            <head>
+                <link rel="stylesheet" href="style.css">
+                <title>NRV</title>
+            </head>
+            <body>
+                <a href="?action=logout"> Se deconnecter</a>
+                $html
+            </body>
+        </html>
+        HTML;
     }
 
     public function run() : void {

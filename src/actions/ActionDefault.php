@@ -7,7 +7,17 @@ class ActionDefault extends Action
 
     public function get(): string
     {
-        return "Hello World!";
+        return <<<HTML
+        <form action="?action=default" method="POST">
+            <div>
+                <a href="?action=signup">Creer un compte</a>
+                <br>
+                <a href="?action=login"> Se connecter</a>
+                <br>
+                <a href="?action=afficherSoirees">Afficher les soirées</a>
+             </div>
+        </form>
+        HTML;
     }
 
     public function post(): string
