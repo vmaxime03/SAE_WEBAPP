@@ -32,7 +32,7 @@ class ActionLogin extends Action
             echo var_dump($user);
             if ($user->email === $_POST["email"] &&
                 password_verify($_POST['passwd'], $user->passwd)) {
-                return "Vous etes deja connecté <br><a href=''>Acceuil</a>";
+                return "Vous etes deja connecté <br><a href=''>Accueil</a>";
             } else {
                 throw new AuthException();
             }
@@ -40,7 +40,7 @@ class ActionLogin extends Action
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
                 unset($_SESSION['playlist']);
-                return "Rebonjour " . $user->email . "<br><a href=''>Acceuil</a>";
+                return "Rebonjour " . $user->email . "<br><a href=''>Accueil</a>";
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }
