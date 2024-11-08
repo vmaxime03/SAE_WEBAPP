@@ -26,6 +26,14 @@ class NrvRepository
         return self::$instance;
     }
 
+    /**
+     * methode utilisée dans le programme insererImages pour inserer les images de test dans la BD
+     * @return PDO
+     */
+    public function getPDO(): PDO
+    {
+        return $this->pdo;
+    }
     public static function setConfig(string $file): void {
         self::$config = parse_ini_file($file);
     }
