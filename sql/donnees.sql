@@ -29,10 +29,11 @@ INSERT INTO Artiste (Nom, info) VALUES
 
 -- Remplissage de la table User
 INSERT INTO User (email, passwd, role) VALUES
-                                           ('user1@mail.com', '0a041b9462caa4a31bac3567e0b6e6fd9100787db2ab433d96f6d178cabfce90', 1),
-                                           ('user2@mail.com', '6025d18fe48abd45168528f18a82e265dd98d421a7084aa09f61b341703901a3', 1),
-                                           ('user3@mail.com', '5860faf02b6bc6222ba5aca523560f0e364ccd8b67bee486fe8bf7c01d492ccb', 1),
-                                           ('admin@mail.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 100);
+                                           ('user1@mail.com', '$2y$12$zuDhMZajE1iNFspnM1dXKuA6klaPsblj2kQWw0IHLqVBMADsZlUbe', 1),
+                                           ('user2@mail.com', '$2y$12$AVI.s1TYweBoptKjCNM7ruYzbt4R1Dwn0Ahh.fGuFjsPdFgtdiAVy', 1),
+                                           ('staff1@mail.com', '$2y$12$/5gRMaEC2nNOylxR8Ka2Dewc9PtTM52MpB2msv.UAnUTgxS5RgGRK', 5),
+                                           ('staff2@mail.com', '$2y$12$ZFedI.35kiKMTaDRN4q48uqfQ8OQuS7QVI25zuOJN0pMlJR57i.pC', 5),
+                                           ('admin@mail.com', '$2y$12$pY3mRVrMS.NqHL0zkwdgZuucfpx4IMHbGp5RoW7ahzSpMMrCiafZu', 100);
 
 
 -- Remplissage de la table Image
