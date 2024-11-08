@@ -12,9 +12,11 @@ class ActionAfficherSoirees extends Action
         $html = '';
         $id = 1;
         while ($soiree = $instance->getSoireebyId($id)) {
+            $lieu = $instance->getLieuById($soiree->idLieu);
             $html .= "<p>{$soiree->nom}</p>";
             $html .= "<p>{$soiree->theme}</p>";
             $html .= "<p>{$soiree->date}</p>";
+            $html .= "<p>{$lieu->nom}</p>";
 
             $id++;
         }

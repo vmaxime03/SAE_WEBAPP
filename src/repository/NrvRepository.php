@@ -2,6 +2,7 @@
 
 namespace Iutnc\Nrv\repository;
 
+use Iutnc\Nrv\classes\Lieu;
 use Iutnc\Nrv\classes\Soiree;
 use Iutnc\Nrv\classes\User;
 use PDO;
@@ -69,15 +70,27 @@ class NrvRepository
             return false;
         }
     }
-    public function getImageSoireeById($id) : Soiree|false
+    public function getLieuById($id) : Lieu|false
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE image.id = '$id'");
+        $stmt = $this->pdo->prepare("SELECT * FROM lieu WHERE id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         if ($result && count($result) == 1) {
-            return Soiree::createFromDb($result[0]);
+            return Lieu::createFromDb($result[0]);
         } else {
             return false;
         }
     }
+
+//    public function getImageSoireeById($id) : Soiree|false
+//    {
+//        $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE image.id = '$id'");
+//        $stmt->execute();
+//        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+//        if ($result && count($result) == 1) {
+//            return Soiree::createFromDb($result[0]);
+//        } else {
+//            return false;
+//        }
+//    }
 }
