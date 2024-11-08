@@ -69,4 +69,15 @@ class NrvRepository
             return false;
         }
     }
+    public function getImageSoireeById($id) : Soiree|false
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE image.id = '$id'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Soiree::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
 }

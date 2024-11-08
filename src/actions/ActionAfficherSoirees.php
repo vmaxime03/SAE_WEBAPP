@@ -13,6 +13,9 @@ class ActionAfficherSoirees extends Action
         $id = 1;
         while ($soiree = $instance->getSoireebyId($id)) {
             $html .= "<p>{$soiree->nom}</p>";
+            $html .= "<p>{$soiree->theme}</p>";
+            $html .= "<p>{$soiree->date}</p>";
+
             $id++;
         }
         return $html;
