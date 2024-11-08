@@ -16,6 +16,7 @@ class ActionAccueilAdmin extends Action
             return <<<HTML
     <form action="?action=accueilStaff" method="POST">
         <nav>
+        <h1>BIENVENUE SUR LA PAGE ACCUEIL ADMIN</h1>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
             <a href="?action=accueilStaff">vue staff</a>

@@ -15,6 +15,7 @@ class ActionAccueilStaff extends Action
             $html = <<<HTML
     <form action="?action=accueilStaff" method="POST">
         <nav>
+         <h1>BIENVENUE SUR LA PAGE ACCUEIL STAFF</h1>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
 
