@@ -6,7 +6,9 @@ use Iutnc\Nrv\exceptions\InvalidPropertyNameException;
 
 class User implements ReadableFromDB, Renderable
 {
-    public static int $ROLE_ADMIN = 5;
+    public static int $ROLE_ADMIN = 100;
+    public static int $ROLE_USER = 1;
+    public static int $ROLE_STAFF = 5;
 
     private int $id;
     private string $email;
