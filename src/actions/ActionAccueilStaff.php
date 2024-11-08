@@ -31,6 +31,11 @@ class ActionAccueilStaff extends Action
                 <a href="?action=accueilUser">vue user</a>
                 HTML;
             }
+            if ($user->getRole($user) ==5){
+                $html .= <<<HTML
+                <a href="?action=accueilUser">vue user</a>
+                HTML;
+            }
             return $html;
         } catch (AuthException $e) {
             $user = AuthProvider::getSignedInUser();
