@@ -15,8 +15,10 @@ class ActionLogin extends Action
     </form>
     HTML;
 
-    public function getRoleUser ($user->role) :string {
-        switch ($user->role) {
+    public function getRoleUser(string $role): string
+    {
+        $html = '';
+        switch ($role) {
             case "ROLE_ADMIN":
                 $html = "<br><a href='?action=accueilAdmin'>Accueil</a>";
                 break;
@@ -27,11 +29,11 @@ class ActionLogin extends Action
                 $html = "<br><a href='?action=accueilStaff'>Accueil</a>";
                 break;
             default:
+                $html = "<br><a href='?action=accueil'>Accueil</a>";
                 break;
         }
         return $html;
     }
-
 
     public function get(): string
     {
@@ -47,19 +49,16 @@ class ActionLogin extends Action
 
         try {
             $user = AuthProvider::getSignedInUser();
-            echo var_dump($user);
             if ($user->email === $_POST["email"] &&
                 password_verify($_POST['passwd'], $user->passwd)) {
-                return "Vous etes deja connecté " . getRoleUser($user->role);
+                return "Vous êtes déjà connecté " . $this->getRoleUser($user->role);
             } else {
                 throw new AuthException();
             }
         } catch (AuthException $e) {
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
-                $html = "Rebonjour " . $user->email . getRoleUser($user->role);
-                }
-                return $html;
+                return "Rebonjour " . $user->email . $this->getRoleUser($user->role);
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }
