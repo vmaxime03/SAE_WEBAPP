@@ -30,7 +30,7 @@ class ActionAccueilAdmin extends Action
             $html = <<<HTML
                 <p>Vous n'avez pas les droits pour accéder à cette page</p>
             HTML;
-            return $html . $user->getRoleUser($user->role);
+            return $html . $user->choixAccueilByRole($user->role);
         }
     }
 

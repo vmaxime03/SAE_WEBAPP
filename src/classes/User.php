@@ -46,7 +46,8 @@ class User implements ReadableFromDB, Renderable
         }
     }
 
-    public function getRoleUser(int $role): string
+
+    public function choixAccueilByRole(int $role): string
     {
         $html = '';
         switch ($role) {
@@ -61,6 +62,11 @@ class User implements ReadableFromDB, Renderable
                 break;
         }
         return $html;
+    }
+
+    function getRole(User $user): int
+    {
+        return $user->role;
     }
 
 }

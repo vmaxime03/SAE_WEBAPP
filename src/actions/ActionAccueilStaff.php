@@ -1,8 +1,10 @@
 <?php
 
 namespace Iutnc\Nrv\actions;
+use Iutnc\Nrv\auth\AuthProvider;
 use Iutnc\Nrv\auth\Authz;
 use Iutnc\Nrv\exceptions\AuthException;
+use Iutnc\Nrv\classes\User;
 
 class ActionAccueilStaff extends Action
 {
@@ -21,12 +23,22 @@ class ActionAccueilStaff extends Action
 
     </form>
     HTML;
+            $user = AuthProvider::getSignedInUser();
+            if ($user->getRole($user) ==100){
+                $html .= <<<HTML
+                <a href="?action=accueilAdmin">vue admin</a>
+                <br>
+                <a href="?action=accueilUser">vue user</a>
+                HTML;
+            }
             return $html;
         } catch (AuthException $e) {
-            return <<<HTML
+            $user = AuthProvider::getSignedInUser();
+            $html = <<<HTML
                 <p>Vous n'avez pas les droits pour accéder à cette page</p>
-                <a href="?action=accueilUser">Retour à la page d'accueil</a>
             HTML;
+            return $html . $user->choixAccueilByRole($user->role);
+
         }
 
     }

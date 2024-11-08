@@ -10,7 +10,7 @@ class ActionAccueilUser extends Action
     private string $form = <<<HTML
     <form action="?action=accueilUser" method="POST">
         <nav>
-         <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
+            <h1>BIENVENUE SUR LA PAGE ACCUEIL USER</h1>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
 
