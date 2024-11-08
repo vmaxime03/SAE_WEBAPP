@@ -2,6 +2,7 @@
 
 namespace Iutnc\Nrv\repository;
 
+use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\classes\Lieu;
 use Iutnc\Nrv\classes\Soiree;
 use Iutnc\Nrv\classes\Spectacle;
@@ -101,5 +102,15 @@ class NrvRepository
             return false;
         }
     }
-
+    public function getImageByIdLieu($idLieu) : Image|false
+    {
+        $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, lieu2image WHERE image.id = lieu2image.id_image AND lieu2image.id_lieu = '$idLieu'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Image::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
 }

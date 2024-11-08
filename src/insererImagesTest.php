@@ -22,7 +22,7 @@ for($id = 1; $id<=count($imagesAModifier); $id++){
 //on veut ajouter des tuples complets dans la table image corespondants aux images des lieux via la table lieu2image
 
 $imagesLieu = ['../imagesTest/theatre.jpg','../imagesTest/sallePoirel.jpg','../imagesTest/centreProuve.jpg'];
-$descriptions = ['Theatre de Nancy', 'Salle Poirel', 'Centre Culturel Jean Prouvé'];
+$descriptions = ['Photo du Theatre de Nancy', 'Photo de la Salle Poirel', 'Photo du Centre Culturel Jean Prouvé'];
 
 for($i = 0; $i<count($imagesLieu); $i++){
     $imageData = file_get_contents($imagesLieu[$i]);
@@ -33,6 +33,16 @@ for($i = 0; $i<count($imagesLieu); $i++){
 
     $stmt->execute();
 }
+
+//on change les id des images de lieu qui ne correspondaient pas
+$newId = [5, 6, 7];
+$ancienId = [4, 3, 2];
+for($i = 0; $i<count($newId); $i++){
+    $stmt = $pdo->prepare("UPDATE lieu2image SET id_image = :idImage WHERE id_lieu = $i+1 AND id_image = {$ancienId[$i]}");
+    $stmt->bindParam(':idImage', $newId[$i]);
+    $stmt->execute();
+}
+
 
 
 

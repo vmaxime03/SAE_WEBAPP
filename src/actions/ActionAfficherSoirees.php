@@ -2,6 +2,7 @@
 
 namespace Iutnc\Nrv\actions;
 
+use Iutnc\Nrv\renderer\ImageRenderer;
 use Iutnc\Nrv\repository\NrvRepository;
 
 class ActionAfficherSoirees extends Action
@@ -13,10 +14,13 @@ class ActionAfficherSoirees extends Action
         $id = 1;
         while ($soiree = $instance->getSoireebyId($id)) {
             $lieu = $instance->getLieuById($soiree->idLieu);
+            $image = $instance->getImageByIdLieu($lieu->id);
+            $imageRendered = new ImageRenderer($image);
             $html .= "<p>{$soiree->nom}</p>";
             $html .= "<p>{$soiree->theme}</p>";
             $html .= "<p>{$soiree->date}</p>";
             $html .= "<p>{$lieu->nom}</p>";
+            $html .= "<p>{$imageRendered->render()}</p>";
 
             $id++;
         }
