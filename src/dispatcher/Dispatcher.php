@@ -7,7 +7,11 @@ use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
 use Iutnc\Nrv\actions\ActionSignup;
-use Iutnc\Nrv\actions\ActionAccueil;
+use Iutnc\Nrv\actions\ActionAccueilUser;
+use Iutnc\Nrv\actions\ActionAccueilStaff;
+use Iutnc\Nrv\actions\ActionAccueilAdmin;
+use Iutnc\Nrv\exceptions\AuthException;
+
 
 class Dispatcher
 {
@@ -40,7 +44,9 @@ class Dispatcher
             "login" => new ActionLogin(),
             "logout" => new ActionLogout(),
             "afficherSoirees" => new ActionAfficherSoirees(),
-            "accueil" => new ActionAccueil(),
+            "accueilUser" => new ActionAccueilUser(),
+            "accueilUser" => new ActionAccueilUser(),
+            "accueilStaff" => new ActionAccueilStaff(),
             default => new ActionDefault()
         })->execute());
 
