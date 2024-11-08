@@ -10,9 +10,10 @@ class ActionAfficherSoirees extends Action
     public function get(): string
     {
         $instance = NrvRepository::getInstance();
-        $html = '';
+        $html = '<div class = "soirees"><br>';
         $id = 1;
         while ($soiree = $instance->getSoireebyId($id)) {
+            $html .= "<div>";
             $lieu = $instance->getLieuById($soiree->idLieu);
             $image = $instance->getImageByIdLieu($lieu->id);
             $imageRendered = new ImageRenderer($image);
@@ -21,9 +22,10 @@ class ActionAfficherSoirees extends Action
             $html .= "<p>{$soiree->date}</p>";
             $html .= "<p>{$lieu->nom}</p>";
             $html .= "<p>{$imageRendered->render()}</p>";
-
+            $html .= "</div>";
             $id++;
         }
+        $html .= "</div>";
         return $html;
     }
 
