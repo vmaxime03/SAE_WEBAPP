@@ -46,7 +46,7 @@ class User implements ReadableFromDB, Renderable
         }
     }
 
-    public function getRoleUser(string $role): string
+    public function getRoleUser(int $role): string
     {
         $html = '';
         switch ($role) {
