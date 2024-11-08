@@ -7,18 +7,26 @@ use Iutnc\Nrv\repository\NrvRepository;
 
 class Authz
 {
-    public static function checkRole(int $id): int {
-        $user = AuthnProvider::getSignedInUser();
-        $repo = DeefyRepository::getInstance();
-        $userData = $repo->getRoleByEmail($user['email']);
-
-        if ($userData['role'] === 100) {
-            return; // on fait rien si il est admin car il a acces a tout
+    public static function checkRole(int $role) : void
+    {
+        $user = AuthProvider::getSignedInUser();
+        if ($user->role < $role) {
+            throw new AuthException("Vous n'avez pas le role nécessaire pour acceder a cette page");
         }
-        $isOwner= $repo->etreProprioPlaylist($userData['id'], $playlistId);
+    }
 
-        if (!$isOwner) {
-            throw new AuthnException("Accès refusé : vous n'êtes pas le propriétaire de cette playlist.");
-        }
+    public static function checkRoleAdmin() : void
+    {
+        self::checkRole(NrvRepository::$ROLE_ADMIN);
+    }
+
+    public static function checkRoleStaff() : void
+    {
+        self::checkRole(NrvRepository::$ROLE_STAFF);
+    }
+
+    public static function checkRoleUser() : void
+    {
+        self::checkRole(NrvRepository::$ROLE_USER);
     }
 }
