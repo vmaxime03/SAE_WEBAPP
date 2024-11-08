@@ -7,7 +7,10 @@ use Iutnc\Nrv\exceptions\AuthException;
 
 class ActionAccueilUser extends Action
 {
-    private string $form = <<<HTML
+
+    public function get(): string
+    {
+        $html = <<<HTML
     <form action="?action=accueilUser" method="POST">
         <nav>
             <h1>BIENVENUE SUR LA PAGE ACCUEIL USER</h1>
@@ -16,10 +19,20 @@ class ActionAccueilUser extends Action
 
     </form>
     HTML;
-
-    public function get(): string
-    {
-        return $this->form;
+        $user = AuthProvider::getSignedInUser();
+        if ($user->getRole($user) ==100){
+            $html .= <<<HTML
+                <a href="?action=accueilAdmin">vue admin</a>
+                <br>
+                <a href="?action=accueilStaff">vue Staff</a>
+                HTML;
+        }
+        if ($user->getRole($user) ==5){
+            $html .= <<<HTML
+                <a href="?action=accueilStaff">vue Staff</a>
+                HTML;
+        }
+        return $html;
     }
 
     public function post(): string
