@@ -58,7 +58,7 @@ class NrvRepository
         $stmt->execute();
     }
 
-    public function getSoireebyId($id) : Soiree|false
+    public function getSoireeById($id) : Soiree|false
     {
         $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE id = '$id'");
         $stmt->execute();

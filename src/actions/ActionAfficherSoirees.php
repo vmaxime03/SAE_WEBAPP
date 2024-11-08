@@ -9,12 +9,12 @@ class ActionAfficherSoirees extends Action
     public function get(): string
     {
         $instance = NrvRepository::getInstance();
-        $html = <<<HTML
-        <p>{$instance->getSoireebyId(1)->nom}</p>
-        <p>{$instance->getSoireebyId(2)->nom}</p>
-        <p>{$instance->getSoireebyId(3)->nom}</p>
-HTML;
-        //TODO Faire une boucle pour ajouter toutes les soirées
+        $html = '';
+        $id = 1;
+        while ($soiree = $instance->getSoireebyId($id)) {
+            $html .= "<p>{$soiree->nom}</p>";
+            $id++;
+        }
         return $html;
     }
 
