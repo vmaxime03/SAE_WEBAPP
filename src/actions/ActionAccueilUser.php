@@ -5,7 +5,7 @@ namespace Iutnc\Nrv\actions;
 use Iutnc\Nrv\auth\AuthProvider;
 use Iutnc\Nrv\exceptions\AuthException;
 
-class ActionAccueil extends Action
+class ActionAccueilUser extends Action
 {
     private string $form = <<<HTML
     <form action="?action=accueil" method="POST">
