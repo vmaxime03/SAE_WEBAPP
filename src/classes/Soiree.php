@@ -10,7 +10,7 @@ class Soiree implements ReadableFromDB, Renderable
     private string $nom;
     private string $theme;
     private string $date;
-    private double $tarif;
+    private float $tarif;
     private int $idLieu;
 
     public function __construct(int $id, string $nom, string $theme, string $date, int $tarif, int $idLieu)
@@ -25,7 +25,7 @@ class Soiree implements ReadableFromDB, Renderable
 
     public static function createFromDb(mixed $obj) : Soiree
     {
-        return new Soiree($obj->id, $obj->nom, $obj->theme, $obj->date, $obj->tarif, $obj->id_ieu);
+        return new Soiree($obj->id, $obj->nom, $obj->theme, $obj->date, $obj->tarif, $obj->id_lieu);
     }
 
     public function __get(string $name)

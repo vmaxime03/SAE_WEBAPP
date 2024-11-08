@@ -2,6 +2,7 @@
 
 namespace Iutnc\Nrv\dispatcher;
 
+use Iutnc\Nrv\actions\ActionAfficherSoirees;
 use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
@@ -40,6 +41,7 @@ END;
             "signup" => new ActionSignup(),
             "login" => new ActionLogin(),
             "logout" => new ActionLogout(),
+            "afficherSoirees" => new ActionAfficherSoirees(),
             default => new ActionDefault()
         })->execute());
 
