@@ -20,7 +20,7 @@ class SoireeRenderer implements Renderer
         <div class = 'soiree'>
             <p>nom : {$this->toRender->nom}</p>
             <p>theme : {$this->toRender->theme}</p>
-            <p>date : {$this->toRender->ville}</p>
+            <p>date : {$this->toRender->date}</p>
             <p>tarif : {$this->toRender->tarif}</p>
         </div>
 HTML;

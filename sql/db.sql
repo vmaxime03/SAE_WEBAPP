@@ -6,7 +6,7 @@ CREATE TABLE Soiree (
                         nom VARCHAR(30),
                         theme VARCHAR(30),
                         date DATETIME,
-                        tarif DOUBLE(8,2),
+                        tarif DECIMAL(8,2),
                         id_lieu INT(4)
 )ENGINE=INNODB;
 

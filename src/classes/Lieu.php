@@ -8,7 +8,7 @@ class Lieu implements ReadableFromDB, Renderable
 {
     private int $id;
     private string $nom;
-    private string $addresse;
+    private string $adresse;
     private string $ville;
     private int $nbPlaceAssise;
     private int $nbPlaceDebout;
@@ -18,7 +18,7 @@ class Lieu implements ReadableFromDB, Renderable
     {
         $this->id = $id;
         $this->nom = $nom;
-        $this->addresse = $addresse;
+        $this->adresse = $addresse;
         $this->ville = $ville;
         $this->nbPlaceAssise = $nbPlaceAssise;
         $this->nbPlaceDebout = $nbPlaceDebout;
@@ -26,7 +26,7 @@ class Lieu implements ReadableFromDB, Renderable
 
     public static function createFromDb(mixed $obj): Lieu
     {
-        return new Lieu($obj->id, $obj->nom, $obj->addresse, $obj->ville, $obj->nbPlaceAssise, $obj->nbPlaceDebout);
+        return new Lieu($obj->id, $obj->nom, $obj->adresse, $obj->ville, $obj->nbPLaceAssise, $obj->nbPlaceDebout);
     }
 
     public function __get(string $name)

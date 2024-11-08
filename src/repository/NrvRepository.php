@@ -2,7 +2,10 @@
 
 namespace Iutnc\Nrv\repository;
 
+use Iutnc\Nrv\classes\Artiste;
+use Iutnc\Nrv\classes\Lieu;
 use Iutnc\Nrv\classes\Soiree;
+use Iutnc\Nrv\classes\Spectacle;
 use Iutnc\Nrv\classes\User;
 use PDO;
 
@@ -52,10 +55,36 @@ class NrvRepository
         }
     }
 
-    public function addUser(User $user) : void
+    public function addUser(User $user) : int
     {
-        $stmt = $this->pdo->prepare("INSERT INTO user (id, email, passwd, role) VALUES (NULL, '$user->email', '$user->passwd', $user->role)");
+        $stmt = $this->pdo->prepare("INSERT INTO user (id, email, passwd, role) 
+                            VALUE (NULL, '$user->email', '$user->passwd', $user->role)");
         $stmt->execute();
+        return $this->pdo->lastInsertId();
+    }
+
+    public function addSoiree(Soiree $soiree) : int
+    {
+        $t = str_replace( ',', '.', "$soiree->tarif");
+        $stmt = $this->pdo->prepare("INSERT INTO soiree (id, nom, theme, date, tarif, id_lieu) 
+                                VALUE (NULL, '$soiree->nom', '$soiree->theme', '$soiree->date', $t, $soiree->idLieu)");
+        $stmt->execute();
+        return $this->pdo->lastInsertId();
+    }
+
+    public function addSpectacle(Spectacle $spectacle) : int
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO spectacle (id, titre, description, heure, duree, libelleStyle, video, id_soiree, est_annule)
+                                VALUE (NULL, '$spectacle->titre', '$spectacle->description', '$spectacle->heure', '$spectacle->duree', 
+                                      '$spectacle->style', '$spectacle->videoUrl', '$spectacle->idSoiree', 0)");
+        $stmt->execute();
+        return $this->pdo->lastInsertId();
+    }
+
+    public function addArtiste(Artiste $artiste) : int {
+        $stmt = $this->pdo->prepare("INSERT INTO artiste (id, Nom, info) VALUE (NULL, '$artiste->nom', '$artiste->info')");
+        $stmt->execute();
+        return $this->pdo->lastInsertId();
     }
 
     public function getSoireeById($id) : Soiree|false
@@ -79,5 +108,54 @@ class NrvRepository
         } else {
             return false;
         }
+    }
+
+    public function getAllLieu() : array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM lieu");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $r = array();
+        foreach ($result as $row) {
+            $r[] = Lieu::createFromDb($row);
+        }
+        return $r;
+
+    }
+    public function getAllSpectacle() : array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM spectacle");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $r = array();
+        foreach ($result as $row) {
+            $r[] = Spectacle::createFromDb($row);
+        }
+        return $r;
+
+    }
+    public function getAllArtiste() : array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM artiste");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $r = array();
+        foreach ($result as $row) {
+            $r[] = Artiste::createFromDb($row);
+        }
+        return $r;
+    }
+
+    public function getAllSoiree() : array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM soiree");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $r = array();
+        foreach ($result as $row) {
+            $r[] = Soiree::createFromDb($row);
+        }
+        return $r;
+
     }
 }

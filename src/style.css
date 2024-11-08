@@ -1,0 +1,9 @@
+.selectable {
+    cursor: pointer;
+    border: blue solid 1px;
+}
+
+.selectable:hover   {
+    transition: 0.5s;
+    background-color: burlywood;
+}

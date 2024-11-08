@@ -2,7 +2,10 @@
 
 namespace Iutnc\Nrv\dispatcher;
 
+use Iutnc\Nrv\actions\ActionAfficherLieu;
 use Iutnc\Nrv\actions\ActionAfficherSoirees;
+use Iutnc\Nrv\actions\ActionCreerSoiree;
+use Iutnc\Nrv\actions\ActionCreerSpectacle;
 use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
@@ -27,6 +30,8 @@ class Dispatcher
             </head>
             <body>
                 <a href="?action=logout"> Se deconnecter</a>
+                <a href="?action=creerSoiree"> Creer Soiree</a>
+                <a href="?action=creerSpectacle"> Creer Spectacle</a>
                 $html
             </body>
         </html>
@@ -41,6 +46,9 @@ class Dispatcher
             "logout" => new ActionLogout(),
             "afficherSoirees" => new ActionAfficherSoirees(),
             "accueil" => new ActionAccueil(),
+            "creerSoiree" => new ActionCreerSoiree(),
+            "creerSpectacle" => new ActionCreerSpectacle(),
+            "afficherLieu" => new ActionAfficherLieu(),
             default => new ActionDefault()
         })->execute());
 

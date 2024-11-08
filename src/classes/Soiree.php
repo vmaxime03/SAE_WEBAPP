@@ -13,7 +13,7 @@ class Soiree implements ReadableFromDB, Renderable
     private float $tarif;
     private int $idLieu;
 
-    public function __construct(int $id, string $nom, string $theme, string $date, int $tarif, int $idLieu)
+    public function __construct(int $id, string $nom, string $theme, string $date, float $tarif, int $idLieu)
     {
         $this->id = $id;
         $this->nom = $nom;

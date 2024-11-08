@@ -24,4 +24,15 @@ abstract class Action {
 
     abstract public function get() : string;
     abstract public function post() : string;
+
+
+    protected function checkPostInput(string $name, int $FILTER, array|int $option = null) : mixed {
+        if (is_null($option)) {
+            $f = filter_var($_POST[$name], $FILTER);
+        } else {
+            $f = filter_var($_POST[$name], $FILTER, $option);
+        }
+        return isset($_POST[$name]) && $_POST[$name] != "" &&
+                    $_POST[$name] === $f ? $_POST[$name] : false;
+    }
 }
