@@ -58,3 +58,9 @@ INSERT INTO Spectacle2Image (id_spectacle, id_image) VALUES
                                                          (3, 2),
                                                          (4, 4),
                                                          (5, 3);
+
+-- Remplissage de la table Spectacle2Image
+INSERT INTO Lieu2Image (id_lieu, id_image) VALUES
+                                                         (1, 4),
+                                                         (2, 3),
+                                                         (3, 2);

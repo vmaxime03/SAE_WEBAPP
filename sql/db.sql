@@ -79,6 +79,14 @@ CREATE TABLE Spectacle2Image (
 
 )ENGINE=INNODB;
 
+DROP TABLE IF EXISTS Lieu2Image;
+CREATE TABLE Lieu2Image (
+                                 id_lieu INT(4),
+                                 id_image INT(4),
+                                 PRIMARY KEY (id_lieu, id_image)
+
+)ENGINE=INNODB;
+
 
 ALTER TABLE Soiree ADD foreign key (id_lieu) References Lieu(id) ON DELETE CASCADE;
 
@@ -89,5 +97,8 @@ ALTER TABLE Spectacle2Artiste ADD foreign key (id_artiste) References Artiste(id
 
 ALTER TABLE Spectacle2Image ADD foreign key (id_spectacle) References Spectacle(id) ON DELETE CASCADE;
 ALTER TABLE Spectacle2Image ADD foreign key (id_image) References Image(id) ON DELETE CASCADE;
+
+ALTER TABLE Lieu2Image ADD foreign key (id_lieu) References Lieu(id) ON DELETE CASCADE;
+ALTER TABLE Lieu2Image ADD foreign key (id_image) References Image(id) ON DELETE CASCADE;
 
 SET foreign_key_checks = 1;
