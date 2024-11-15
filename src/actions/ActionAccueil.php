@@ -38,7 +38,7 @@ HTML;
                     <br>
                     <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>
                     <br>
-                    <a href="?action=afficherPreference"> Afficher liste de préférence</a>
+                    <a href="?action=afficherPreference"> Afficher liste de préférences</a>
                 </div>
             </nav>
         </form>
