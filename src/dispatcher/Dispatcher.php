@@ -20,7 +20,6 @@ use Iutnc\Nrv\actions\ActionAccueilAdmin;
 use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\actions\ActionAfficherSpectacle;
-use Iutnc\Nrv\actions\AfficherTousSpectacle;
 
 class Dispatcher
 {
@@ -58,12 +57,15 @@ class Dispatcher
             "login" => new ActionLogin(),
             "logout" => new ActionLogout(),
             "afficherSoirees" => new ActionAfficherSoirees(),
-            "afficherTousSpectacle" => new AfficherTousSpectacle(),
 
             "accueil" => new ActionAccueil(),
             "creerSoiree" => new ActionCreerSoiree(),
             "creerSpectacle" => new ActionCreerSpectacle(),
             "afficherLieu" => new ActionAfficherLieu(),
+
+            "accueilUser" => new ActionAccueilUser(),
+            "accueilAdmin" => new ActionAccueilAdmin(),
+            "accueilStaff" => new ActionAccueilStaff(),
 
             "ajouterArtiste" => new ActionAjouterArtiste(),
             "creerArtiste" => new ActionCreerArtiste(),

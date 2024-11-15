@@ -19,8 +19,6 @@ class ActionAccueil extends Action
             <br>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
-            <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>
-            <br>
         </nav>
     </form>
 HTML;

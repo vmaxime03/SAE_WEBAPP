@@ -171,8 +171,11 @@ class NrvRepository
         $stmt = $this->pdo->prepare("SELECT * FROM spectacle");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-        return $result;
+        $r = array();
+        foreach ($result as $row) {
+            $r[] = Spectacle::createFromDb($row);
+        }
+        return $r;
 
     }
     public function getAllArtiste() : array
