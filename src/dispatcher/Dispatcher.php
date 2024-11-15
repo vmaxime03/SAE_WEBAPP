@@ -14,7 +14,7 @@ use Iutnc\Nrv\actions\ActionAccueilUser;
 use Iutnc\Nrv\actions\ActionAccueilStaff;
 use Iutnc\Nrv\actions\ActionAccueilAdmin;
 use Iutnc\Nrv\exceptions\AuthException;
-
+use Iutnc\Nrv\actions\ActionAfficherSpectacle;
 
 class Dispatcher
 {
@@ -58,6 +58,7 @@ class Dispatcher
             "accueilUser" => new ActionAccueilUser(),
             "accueilAdmin" => new ActionAccueilAdmin(),
             "accueilStaff" => new ActionAccueilStaff(),
+            "AfficherSpectacle" => new ActionAfficherSpectacle(),
             default => new ActionDefault()
         })->execute());
 
