@@ -54,7 +54,7 @@ HTML;
                 <br>
                 <a href="?action=annulerSpectacle">Annuler un spectacle</a>
                 <br>
-                <a href="?action=modifierSpectacle">Annuler un spectacle</a>
+                <a href="?action=modifierSpectacle">Modifier un spectacle</a>
             </div>
         </nav>
 HTML;
