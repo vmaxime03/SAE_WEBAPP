@@ -6,6 +6,11 @@ use Iutnc\Nrv\auth\AuthProvider;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\exceptions\CreateUserException;
 
+/**
+ * creer un utilisateur
+ * avec double entrée du mot de pass
+ * les admin peuvent creer des membres du staffs
+ */
 class ActionSignup extends Action
 {
     private string $form = <<<HTML

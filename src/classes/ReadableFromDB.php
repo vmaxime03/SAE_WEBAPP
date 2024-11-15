@@ -2,6 +2,9 @@
 
 namespace Iutnc\Nrv\classes;
 
+/**
+ * indique si la classe peut lire l'output d'une requete sql
+ */
 interface ReadableFromDB
 {
     /**

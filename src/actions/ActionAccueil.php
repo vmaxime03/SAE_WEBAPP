@@ -14,7 +14,7 @@ class ActionAccueil extends Action
             <link rel="stylesheet" href="../style.css">
             <nav class="lien">
                 <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
-                <br>
+                <br>    
                 <div class="connection">
 HTML;
 

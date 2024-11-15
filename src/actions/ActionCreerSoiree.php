@@ -10,6 +10,10 @@ use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurLieu;
 
+
+/**
+ * creer un soirée en proposant le lieu a selectionner
+ */
 class ActionCreerSoiree extends Action
 {
     private function getForm(string $nom = "", string $theme = "", string $date = "", string $time = "", string $tarif = "") : string {

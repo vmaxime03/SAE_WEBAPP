@@ -8,6 +8,15 @@ use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurSoiree;
 use Iutnc\Nrv\selectioneur\SelectioneurSpectacle;
 
+
+/**
+ * modifie un spectacle, fonctionnement :
+ * on choisit un spectacle (getFormSelect)
+ * on effectue les changements (getFormSpectacle)
+ * le spectacle est mis ajour
+ *
+ * le bon formulaire est ré-envoyer en cas d'erreur de saisie ou d'id illégaux
+ */
 class ActionModifierSpectacle extends Action
 {
     private function getFormSpectacle(int $spectacleid = -1, int $soireeid = -1, string $titre = "", string $description = "", string $heure = "",

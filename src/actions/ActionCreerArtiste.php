@@ -9,6 +9,11 @@ use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurArtiste;
 
+
+/**
+ * creer un artiste
+ * si la page est apprlée avec un spectacleid dans l'url, l'artiste creer est ajouter ajouter au spectacle
+ */
 class ActionCreerArtiste extends Action
 {
 

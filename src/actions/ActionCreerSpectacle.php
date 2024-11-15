@@ -12,6 +12,9 @@ use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurLieu;
 use Iutnc\Nrv\selectioneur\SelectioneurSoiree;
 
+/**
+ * creer un spectacle en choisissant la soirrée du spectacle
+ */
 class ActionCreerSpectacle extends Action
 {
     private function getForm(int $soireeid = -1, string $titre = "", string $description = "", string $heure = "",

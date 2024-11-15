@@ -5,6 +5,9 @@ namespace Iutnc\Nrv\actions;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * affichage de tous les lieux
+ */
 class ActionAfficherLieu extends Action
 {
 

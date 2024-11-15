@@ -7,6 +7,12 @@ use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\exceptions\CreateUserException;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * classe AuthProvider
+ * verification de la force du mdp
+ * protection contre le bruteforce (sleep de 1 s)
+ * mot de pass hashé
+ */
 class AuthProvider{
 
     public static function checkPasswordStrength(string $pass, int $minimumLength = 10): bool {

@@ -5,6 +5,9 @@ namespace Iutnc\Nrv\actions;
 use Iutnc\Nrv\renderer\ImageRenderer;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * Affiche une soirée lié a un spectacle donné
+ */
 class ActionAfficherUneSoiree extends Action
 {
     public function get(): string

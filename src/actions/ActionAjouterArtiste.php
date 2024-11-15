@@ -7,6 +7,12 @@ use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurArtiste;
 
+/**
+ * selectionne un artiste a ajouter a un spectacle,
+ * le get renvoie le formulaire et le post ajoute l'artiste a la bd en cas de succes, sinon renvoie le formulaire
+ * cette page est disponique que pour les user ayant pour role staff ou admin
+ * cette page est dispnible que depuis la page d'un spectacle
+ */
 class ActionAjouterArtiste extends Action
 {
 
