@@ -10,7 +10,7 @@ class Spectacle implements ReadableFromDB, Renderable
     private string $titre;
     private string $description;
     private string $heure;
-    private string $duree;
+    private String $duree;
     private string $style;
     private string $videoUrl;
     private int $idSoiree;

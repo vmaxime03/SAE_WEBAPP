@@ -20,7 +20,7 @@ class SpectacleRenderer implements Renderer
         <div class = 'spectacle'>
             <p>titre : {$this->toRender->titre}</p>
             <p>description : {$this->toRender->description}</p>
-            <p>heure : {$this->toRender->heure}</p>
+            <p>date et heure : {$this->toRender->heure}</p>
             <p>duree : {$this->toRender->duree}</p>
             <p>style : {$this->toRender->style}</p>
             <video controls width="250">
