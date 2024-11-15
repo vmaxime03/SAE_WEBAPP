@@ -153,6 +153,17 @@ class NrvRepository
             return false;
         }
     }
+    public function getImageByIdSpectacle($idSpectacle) : Image|false
+    {
+        $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, spectacle2image WHERE image.id = spectacle2image.id_image AND spectacle2image.id_spectacle = '$idSpectacle'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Image::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
 
     public function getAllLieu() : array
     {
