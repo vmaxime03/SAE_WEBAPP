@@ -30,7 +30,6 @@ class SpectacleRenderer implements Renderer
             <p>heure : {$this->toRender->heure}</p>
             <p>duree : {$this->toRender->duree}</p>
             <p>style : {$this->toRender->style}</p>
-            <p> : {$this->toRender->style}</p>
             <video controls width="250">
                 <source src="{$this->toRender->videoUrl}" type="video/mp4" />
             </video>

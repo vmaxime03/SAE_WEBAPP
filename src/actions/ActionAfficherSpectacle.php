@@ -3,6 +3,7 @@
 namespace Iutnc\Nrv\actions;
 
 use Iutnc\Nrv\classes\Spectacle;
+use Iutnc\Nrv\renderer\ImageRenderer;
 use Iutnc\Nrv\renderer\SpectacleRenderer;
 use Iutnc\Nrv\repository\NrvRepository;
 
@@ -24,9 +25,12 @@ class ActionAfficherSpectacle extends Action {
         }
 
         foreach ($spectacles as $spectacle) {
-            $test = new Spectacle($spectacle->id, $spectacle->titre, $spectacle->description, $spectacle->heure, $spectacle->duree, $spectacle->libelleStyle, $spectacle->video, $spectacle->id_soiree);
-            $renderedTest = new SpectacleRenderer($test);
-            $html .= $renderedTest->render();
+            $s = new Spectacle($spectacle->id, $spectacle->titre, $spectacle->description, $spectacle->heure, $spectacle->duree, $spectacle->libelleStyle, $spectacle->video, $spectacle->id_soiree);
+            $renderedSpectacle = new SpectacleRenderer($s);
+            $html .= $renderedSpectacle->render();
+            $image = $instance->getImageByIdSpectacle($s->id);
+            $imageRendered = new ImageRenderer($image);
+            $html .= "<p>{$imageRendered->render()}</p>";
             $html .= "<p>-------------</p>";
         }
 

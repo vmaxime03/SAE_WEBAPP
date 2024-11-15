@@ -24,6 +24,7 @@ class NrvRepository
     public static int $TRI_DEFAUT = 0;
     public static int $TRI_DATE = 1;
     public static int $TRI_THEME_SOIREE = 2;
+    public static int $TRI_LIEU = 3;
 
 
     private function __construct(array $config) {
@@ -157,6 +158,17 @@ class NrvRepository
             return false;
         }
     }
+    public function getImageByIdSpectacle($idSpectacle) : Image|false
+    {
+        $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, spectacle2image WHERE image.id = spectacle2image.id_image AND spectacle2image.id_spectacle = '$idSpectacle'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Image::createFromDb($result[0]);
+        } else {
+            return false;
+        }
+    }
 
     public function getAllLieu() : array
     {
@@ -197,6 +209,7 @@ class NrvRepository
     public function getAllSoiree(int $tri = 0) : array
     {
         $sql = match ($tri) {
+            self::$TRI_LIEU => "SELECT soiree.id, soiree.nom, soiree.theme, soiree.date, soiree.tarif, soiree.id_lieu FROM soiree, lieu WHERE soiree.id_lieu = lieu.id ORDER BY lieu.nom;;",
             self::$TRI_THEME_SOIREE =>  "SELECT * FROM soiree ORDER BY soiree.theme;",
             self::$TRI_DATE => "SELECT * FROM soiree ORDER BY soiree.date;",
             default => "SELECT * FROM soiree",

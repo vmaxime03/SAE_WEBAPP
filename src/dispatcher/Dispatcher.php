@@ -23,6 +23,7 @@ use Iutnc\Nrv\actions\ActionAccueilAdmin;
 use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\actions\ActionAfficherSpectacle;
+use Iutnc\Nrv\actions\ActionAfficherTousSpectacle;
 
 class Dispatcher
 {
@@ -46,6 +47,7 @@ class Dispatcher
                 <a href="?action=acceuil"></a>
                 <a href="?action=signup">Creer un compte</a>
                 <a href="?action=login"> Se connecter</a>
+                <a href="?action=accueil"> Accueil</a>
                 <a href="?action=logout"> Se deconnecter</a>
                 <a href="?action=afficherSoirees">Afficher les soirées</a>
                 <a href="?action=creerSoiree"> Creer Soiree</a>
@@ -74,15 +76,13 @@ class Dispatcher
             "login" => new ActionLogin(),
             "logout" => new ActionLogout(),
             "afficherSoirees" => new ActionAfficherSoirees(),
+            "afficherTousSpectacle" => new ActionAfficherTousSpectacle(),
 
             "accueil" => new ActionAccueil(),
             "creerSoiree" => new ActionCreerSoiree(),
             "creerSpectacle" => new ActionCreerSpectacle(),
             "afficherLieu" => new ActionAfficherLieu(),
 
-            "accueilUser" => new ActionAccueilUser(),
-            "accueilAdmin" => new ActionAccueilAdmin(),
-            "accueilStaff" => new ActionAccueilStaff(),
 
             "ajouterArtiste" => new ActionAjouterArtiste(),
             "creerArtiste" => new ActionCreerArtiste(),
@@ -94,9 +94,10 @@ class Dispatcher
             "AfficherSpectacle" => new ActionAfficherSpectacle(),
 
             "afficherPreference" => new ActionAfficherPreference(),
-            default => new ActionDefault()
+            default => new ActionAccueil()
         })->execute());
-    }
 
+
+    }
 
 }
