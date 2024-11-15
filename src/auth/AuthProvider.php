@@ -19,6 +19,7 @@ class AuthProvider{
     }
 
     public static function signin(string $email, string $password) : User {
+        sleep(1);
 
         $repo = NrvRepository::getInstance();
 

@@ -15,6 +15,7 @@ use Iutnc\Nrv\actions\ActionCreerSpectacle;
 use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
+use Iutnc\Nrv\actions\ActionModifierSpectacle;
 use Iutnc\Nrv\actions\ActionRetirerPreference;
 use Iutnc\Nrv\actions\ActionSignup;
 use Iutnc\Nrv\actions\ActionAccueil;
@@ -41,7 +42,6 @@ class Dispatcher
             <head>
                 <link rel="stylesheet" href="style.css">
                 <script src="preference.js"></script>
-                <link rel="stylesheet" href="../style.css">
                 <title>NRV</title>
             </head>
             <body>
@@ -52,7 +52,6 @@ class Dispatcher
             </body>
         </html>
         HTML;
-        //<p>http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</p>
     }
 
     public function run() : void {
@@ -89,6 +88,8 @@ class Dispatcher
             "afficherPreference" => new ActionAfficherPreference(),
             "afficherUneSoiree" => new ActionAfficherUneSoiree(),
 
+
+            "modifierSpectacle" => new ActionModifierSpectacle(),
             default => new ActionAccueil()
         })->execute());
 

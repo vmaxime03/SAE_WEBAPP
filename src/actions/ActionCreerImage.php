@@ -24,7 +24,7 @@ class ActionCreerImage extends Action
     <label>Audio :</label>
     <input type="file" name="image" placeholder="null">
     <br>
-    <input type="submit" value="Ajouter Track">
+    <input type="submit" value="Ajouter Image">
 </form>
 HTML;
     }

@@ -22,7 +22,7 @@ class ActionCreerSpectacle extends Action
                 <input type="text" name="titre" placeholder="titre" value="$titre"> 
                 <input type="text" name="description" placeholder="description" value="$description"> 
                 <input type="time" name="heure" placeholder="heure" value="$heure"> 
-                <input type="number" name="duree" placeholder="duree" value="$duree">
+                <input type="text" name="duree" placeholder="duree" value="$duree">
                 <input type="text" name="style" placeholder="style" value="$style"> 
                 <input type="text" name="videourl" placeholder="videourl" value="$videourl"> 
     HTML;
@@ -61,7 +61,7 @@ HTML;
         $titre = $this->checkPostInput('titre', FILTER_SANITIZE_SPECIAL_CHARS);
         $description = $this->checkPostInput('description', FILTER_SANITIZE_SPECIAL_CHARS);
         $heure = $this->checkPostInput('heure', FILTER_SANITIZE_SPECIAL_CHARS);
-        $duree = $this->checkPostInput('duree', FILTER_SANITIZE_NUMBER_INT);
+        $duree = $this->checkPostInput('duree', FILTER_SANITIZE_SPECIAL_CHARS);
         $style = $this->checkPostInput('style', FILTER_SANITIZE_SPECIAL_CHARS);
         $video  = $this->checkPostInput('videourl', FILTER_SANITIZE_URL);
         $idsoiree = $this->checkPostInput('soiree', FILTER_SANITIZE_NUMBER_INT);
@@ -84,7 +84,7 @@ HTML;
         }
 
         $html = RendererFactory::getRenderer($spectacle)->render();
-        $html .= "<a href='?action=creerImage&spectacleid=$id'>ajouter image</a>";
+        $html .= "<a href='?action=creerImage&spectacleid=$id'>ajouter image</a><br>";
         $html .= "<a href='?action=ajouterArtiste&spectacleid=$id'>ajouter artiste</a>";
         return $html;
     }

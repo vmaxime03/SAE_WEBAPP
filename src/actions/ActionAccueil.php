@@ -52,6 +52,8 @@ HTML;
                 <a href="?action=creerSpectacle">Créer Spectacle</a>
                 <br>
                 <a href="?action=annulerSpectacle">Annuler un spectacle</a>
+                <br>
+                <a href="?action=modifierSpectacle">Annuler un spectacle</a>
             </div>
         </nav>
 HTML;
