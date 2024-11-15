@@ -13,7 +13,7 @@ class SelectioneurSoiree extends Selectioneur
         $html = "";
         $repo = NrvRepository::getInstance();
         foreach ($repo->getAllSoiree() as $soiree) {
-            $html .= $this->clickableDiv($soiree->id, RendererFactory::getRenderer($soiree)->render());
+            $html .= $this->clickableDiv($soiree->id, RendererFactory::getRenderer($soiree)->render(), $soiree->nom);
         }
         return $html;
     }

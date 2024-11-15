@@ -76,7 +76,7 @@ HTML;
         }
 
         $html = RendererFactory::getRenderer($spectacle)->render();
-        $html .= "<a href='?action=ajouterImage&spectacleid=$id'>ajouter image</a>";
+        $html .= "<a href='?action=creerImage&spectacleid=$id'>ajouter image</a>";
         $html .= "<a href='?action=ajouterArtiste&spectacleid=$id'>ajouter artiste</a>";
         return $html;
     }

@@ -18,7 +18,7 @@ class ArtisteRenderer implements Renderer
         return <<<HTML
         <div class = 'artiste'>
             <p>nom : {$this->toRender->nom}</p>
-            <p>infos : {$this->toRender->infos}</p>
+            <p>infos : {$this->toRender->info}</p>
         </div>
 HTML;
     }

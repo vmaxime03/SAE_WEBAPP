@@ -13,7 +13,7 @@ class SelectioneurArtiste extends Selectioneur
         $html = "";
         $repo = NrvRepository::getInstance();
         foreach ($repo->getAllArtiste() as $artiste) {
-            $html .= $this->clickableDiv($artiste->id, RendererFactory::getRenderer($artiste)->render());
+            $html .= $this->clickableDiv($artiste->id, RendererFactory::getRenderer($artiste)->render(), $artiste->nom);
         }
         return $html;
     }

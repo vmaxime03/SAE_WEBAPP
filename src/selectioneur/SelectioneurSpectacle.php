@@ -13,7 +13,7 @@ class SelectioneurSpectacle extends Selectioneur
         $html = "";
         $repo = NrvRepository::getInstance();
         foreach ($repo->getAllSpectacle() as $spectacle) {
-            $html .= $this->clickableDiv($spectacle->id, RendererFactory::getRenderer($spectacle)->render());
+            $html .= $this->clickableDiv($spectacle->id, RendererFactory::getRenderer($spectacle)->render(), $spectacle->titre);
         }
         return $html;
     }

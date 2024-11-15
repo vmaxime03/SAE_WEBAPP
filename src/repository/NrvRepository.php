@@ -97,6 +97,14 @@ class NrvRepository
         return $this->pdo->lastInsertId();
     }
 
+    public function addImage(Image $img) : int {
+        $query = "INSERT INTO image (id, filetype, description, data) VALUE (NULL, '$img->filetype', '$img->description', ?)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(1, $img->filetype);
+        $stmt->execute();
+        return $this->pdo->lastInsertId();
+    }
+
     public function getSoireeById($id) : Soiree|false
     {
         $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE id = '$id'");
@@ -188,6 +196,25 @@ class NrvRepository
             $r[] = Soiree::createFromDb($row);
         }
         return $r;
+    }
 
+    public function linkArtisteToSpectacle(int $artiste, int $spectacle) : bool {
+        $stmt = $this->pdo->prepare("INSERT INTO spectacle2artiste (id_spectacle, id_artiste) VALUES ($spectacle, $artiste)");
+        return $stmt->execute();
+    }
+
+    public function linkImageToSpectacle(int $image, int $spectacle) : bool {
+        $stmt = $this->pdo->prepare("INSERT INTO spectacle2image (id_spectacle, id_image) VALUES ($spectacle, $image)");
+        return $stmt->execute();
+    }
+
+    public function annulerSpectacle(int $spectacleid) : bool {
+        $query = <<<SQL
+UPDATE spectacle
+SET est_annule = 1
+WHERE id = $spectacleid
+SQL;
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute();
     }
 }

@@ -25,14 +25,20 @@ abstract class Action {
     abstract public function get() : string;
     abstract public function post() : string;
 
+    protected function checkVar(mixed $var, int $FILTER, array|int $option = null) : mixed {
+        if (!isset($var)) {return false;}
+        if (is_null($option)) {
+            $f = filter_var($var, $FILTER);
+        } else {
+            $f = filter_var($var, $FILTER, $option);
+        }
+        return  ($var != "" && $var === $f) ? $var : false;
+    }
+    protected function checkGetInput(string $name, int $FILTER, array|int $option = null) : mixed {
+        return $this->checkVar($_GET[$name], $FILTER, $option);
+    }
 
     protected function checkPostInput(string $name, int $FILTER, array|int $option = null) : mixed {
-        if (is_null($option)) {
-            $f = filter_var($_POST[$name], $FILTER);
-        } else {
-            $f = filter_var($_POST[$name], $FILTER, $option);
-        }
-        return isset($_POST[$name]) && $_POST[$name] != "" &&
-                    $_POST[$name] === $f ? $_POST[$name] : false;
+        return $this->checkVar($_POST[$name], $FILTER, $option);
     }
 }

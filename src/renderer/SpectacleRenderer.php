@@ -15,6 +15,7 @@ class SpectacleRenderer implements Renderer
 
     public function render(): string
     {
+        //TODO spectacle annulé
         return <<<HTML
         <div class = 'spectacle'>
             <p>titre : {$this->toRender->titre}</p>

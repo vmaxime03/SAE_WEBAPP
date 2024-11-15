@@ -13,7 +13,7 @@ class SelectioneurLieu extends Selectioneur
         $html = "";
         $repo = NrvRepository::getInstance();
         foreach ($repo->getAllLieu() as $lieu) {
-            $html .= $this->clickableDiv($lieu->id, RendererFactory::getRenderer($lieu)->render());
+            $html .= $this->clickableDiv($lieu->id, RendererFactory::getRenderer($lieu)->render(), $lieu->nom);
         }
         return $html;
     }

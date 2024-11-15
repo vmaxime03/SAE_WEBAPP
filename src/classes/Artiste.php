@@ -12,11 +12,14 @@ class Artiste implements ReadableFromDB, Renderable
 
     public function __construct(int $id, string $nom, string $info)
     {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->info = $info;
     }
 
     public static function createFromDb(mixed $obj): Artiste
     {
-        return new Artiste($obj->id, $obj->nom, $obj->info);
+        return new Artiste($obj->id, $obj->Nom, $obj->info);
     }
 
     public function __get(string $name)

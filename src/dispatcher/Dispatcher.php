@@ -4,6 +4,10 @@ namespace Iutnc\Nrv\dispatcher;
 
 use Iutnc\Nrv\actions\ActionAfficherLieu;
 use Iutnc\Nrv\actions\ActionAfficherSoirees;
+use Iutnc\Nrv\actions\ActionAjouterArtiste;
+use Iutnc\Nrv\actions\ActionAnnulerSpectacle;
+use Iutnc\Nrv\actions\ActionCreerArtiste;
+use Iutnc\Nrv\actions\ActionCreerImage;
 use Iutnc\Nrv\actions\ActionCreerSoiree;
 use Iutnc\Nrv\actions\ActionCreerSpectacle;
 use Iutnc\Nrv\actions\ActionDefault;
@@ -13,6 +17,7 @@ use Iutnc\Nrv\actions\ActionSignup;
 use Iutnc\Nrv\actions\ActionAccueilUser;
 use Iutnc\Nrv\actions\ActionAccueilStaff;
 use Iutnc\Nrv\actions\ActionAccueilAdmin;
+use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\exceptions\AuthException;
 
 
@@ -36,6 +41,8 @@ class Dispatcher
                 <a href="?action=logout"> Se deconnecter</a>
                 <a href="?action=creerSoiree"> Creer Soiree</a>
                 <a href="?action=creerSpectacle"> Creer Spectacle</a>
+                <a href="?action=annulerSpectacle"> Annuler Spectacle</a>
+                <p>http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</p> 
                 $html
             </body>
         </html>
@@ -58,6 +65,14 @@ class Dispatcher
             "accueilUser" => new ActionAccueilUser(),
             "accueilAdmin" => new ActionAccueilAdmin(),
             "accueilStaff" => new ActionAccueilStaff(),
+
+            "ajouterArtiste" => new ActionAjouterArtiste(),
+            "creerArtiste" => new ActionCreerArtiste(),
+
+            "creerImage" => new ActionCreerImage(),
+
+            "annulerSpectacle" => new ActionAnnulerSpectacle(),
+
             default => new ActionDefault()
         })->execute());
 
