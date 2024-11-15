@@ -22,7 +22,6 @@ class ActionLogin extends Action
     HTML;
 
 
-
     public function get(): string
     {
         return $this->form;
@@ -39,14 +38,14 @@ class ActionLogin extends Action
             $user = AuthProvider::getSignedInUser();
             if ($user->email === $_POST["email"] &&
                 password_verify($_POST['passwd'], $user->passwd)) {
-                return "Vous êtes déjà connecté " . '<br><a href="?action=accueil">Accueil</a>';
+                return "Vous êtes déjà connecté ";
             } else {
                 throw new AuthException();
             }
         } catch (AuthException $e) {
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
-                return "Rebonjour " . $user->email . '<br><a href="?action=accueil">Accueil</a>';
+                return "Rebonjour " . $user->email;
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }
