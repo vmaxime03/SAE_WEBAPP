@@ -48,4 +48,14 @@ class AuthProvider
             throw new CreateUserException("user already exist");
         }
     }
+
+    public static function registerStaff( string $email, string $pass): void {
+        if(!NrvRepository::getInstance()->getUserByEmail($email)){
+            $hash = password_hash($pass, PASSWORD_DEFAULT, ['cost'=>12]);
+            $user = new User(0, $email, $hash, User::$ROLE_STAFF);
+            NrvRepository::getInstance()->addUser($user);
+        } else {
+            throw new CreateUserException("user already exist");
+        }
+    }
 }

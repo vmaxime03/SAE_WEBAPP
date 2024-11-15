@@ -28,6 +28,7 @@ HTML;
             <a href="?action=creerSoiree">créer Spectacle</a>
             <br>
             <a href="?action=creerSpectacle"> Creer Spectacle</a>
+            <br>
 HTML;
 
         $user = AuthProvider::getSignedInUser();
@@ -38,7 +39,7 @@ HTML;
             case 100:
                 $html .= $htmlStaff;
                 $html .= <<<HTML
-                
+                <a href="?action=signup"> Enregistrer un membre du Staff</a>
 HTML;
                 break;
         }
