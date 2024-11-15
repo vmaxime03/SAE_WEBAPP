@@ -11,10 +11,12 @@ class ActionLogin extends Action
     private string $form = <<<HTML
     <form action="?action=login" method="POST">
     <link rel="stylesheet" href="../style.css">
-    <div class="login">
-                <input type="email" name="email" placeholder="email">
-                <input type="password" name="passwd" placeholder="mot de passe">
-                <input type="submit" value="Confirmer">
+    <div class="tout">
+        <div class="login">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="password" name="passwd" placeholder="mot de passe">
+                    <input type="submit" value="Confirmer">
+         </div>
      </div>
     </form>
     HTML;

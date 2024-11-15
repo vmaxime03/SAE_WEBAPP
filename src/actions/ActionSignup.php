@@ -10,10 +10,15 @@ class ActionSignup extends Action
 {
     private string $form = <<<HTML
     <form action="?action=signup" method="POST">
+    <link rel="stylesheet" href="../style.css">
+    <div class="tout">
+        <div class="signup">
                 <input type="email" name="email" placeholder="email">
                 <input type="password" name="passwd" placeholder="mot de passe">
                 <input type="password" name="passwd2" placeholder="confirmer mot de passe">
                 <input type="submit" value="Confirmer">
+        </div>        
+    </div>
     </form>
     HTML;
 
