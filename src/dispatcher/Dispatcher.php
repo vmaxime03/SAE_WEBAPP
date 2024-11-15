@@ -55,13 +55,10 @@ class Dispatcher
             "creerSpectacle" => new ActionCreerSpectacle(),
             "afficherLieu" => new ActionAfficherLieu(),
 
-<<<<<<< HEAD
             "accueilUser" => new ActionAccueilUser(),
             "accueilAdmin" => new ActionAccueilAdmin(),
             "accueilStaff" => new ActionAccueilStaff(),
             "AfficherSpectacle" => new ActionAfficherSpectacle(),
-=======
->>>>>>> 2a89d3e350f3ff3405dbbde9993e3201c604b60e
             default => new ActionDefault()
         })->execute());
 
