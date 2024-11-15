@@ -2,7 +2,10 @@
 
 namespace Iutnc\Nrv\actions;
 
+use Iutnc\Nrv\auth\Authz;
 use Iutnc\Nrv\classes\Soiree;
+use Iutnc\Nrv\exceptions\AuthException;
+use Iutnc\Nrv\exceptions\AuthzException;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurLieu;
@@ -29,14 +32,16 @@ class ActionCreerSoiree extends Action
 
     public function get(): string
     {
-        // TODO: Authz
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
 
         return $this->getForm();
     }
 
     public function post(): string
     {
-        // TODO authz
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
 
         $nom = $this->checkPostInput('nom', FILTER_SANITIZE_SPECIAL_CHARS);
         $theme = $this->checkPostInput('theme', FILTER_SANITIZE_SPECIAL_CHARS);

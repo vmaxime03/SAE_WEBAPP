@@ -2,7 +2,9 @@
 
 namespace Iutnc\Nrv\actions;
 
+use Iutnc\Nrv\auth\Authz;
 use Iutnc\Nrv\classes\Image;
+use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 
@@ -29,7 +31,8 @@ HTML;
 
     public function get(): string
     {
-        // TODO: authz
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
 
         $sid = $this->checkGetInput('spectacleid', FILTER_SANITIZE_NUMBER_INT);
         if (!$sid) {
@@ -41,7 +44,9 @@ HTML;
 
     public function post(): string
     {
-        // TODO: Implement post() method.
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
+
         $spid = $this->checkGetInput('spectacleid', FILTER_SANITIZE_NUMBER_INT);
         $description = $this->checkPostInput('description', FILTER_SANITIZE_SPECIAL_CHARS);
 

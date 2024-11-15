@@ -3,6 +3,7 @@
 namespace Iutnc\Nrv\auth;
 
 use Iutnc\Nrv\exceptions\AuthException;
+use Iutnc\Nrv\exceptions\AuthzException;
 use Iutnc\Nrv\repository\NrvRepository;
 
 class Authz
@@ -11,7 +12,7 @@ class Authz
     {
         $user = AuthProvider::getSignedInUser();
         if ($user->role < $role) {
-            throw new AuthException("Vous n'avez pas le role nécessaire pour acceder a cette page");
+            throw new AuthzException("Vous n'avez pas le role nécessaire pour acceder a cette page");
         }
     }
 

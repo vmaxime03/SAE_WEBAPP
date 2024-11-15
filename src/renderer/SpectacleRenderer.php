@@ -15,6 +15,13 @@ class SpectacleRenderer implements Renderer
 
     public function render(): string
     {
+        $checked = "";
+        if (isset($_SESSION["preferences"])) {
+            $preferences = unserialize($_SESSION["preferences"]);
+            if (in_array($this->toRender->id, $preferences)) {
+                $checked = "checked";
+            }
+        }
         //TODO spectacle annulé
         return <<<HTML
         <div class = 'spectacle'>
@@ -27,6 +34,7 @@ class SpectacleRenderer implements Renderer
             <video controls width="250">
                 <source src="{$this->toRender->videoUrl}" type="video/mp4" />
             </video>
+            <input type="checkbox" class="preference" id="{$this->toRender->id}" onclick="handlePreference(this)" {$checked}>
         </div>
 HTML;
         //TODO utiliser methode getHeure() pour afficher uniquement l'heure sans la date et pour idsoiree

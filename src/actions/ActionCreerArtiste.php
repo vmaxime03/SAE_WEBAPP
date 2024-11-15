@@ -2,7 +2,9 @@
 
 namespace Iutnc\Nrv\actions;
 
+use Iutnc\Nrv\auth\Authz;
 use Iutnc\Nrv\classes\Artiste;
+use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurArtiste;
@@ -23,7 +25,9 @@ HTML;
 
     public function get(): string
     {
-        // TODO: AUTHZ
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
+
 
         $spectacleId = $this->checkGetInput('spectacleId', FILTER_SANITIZE_NUMBER_INT);
         return $spectacleId?$this->getForm($spectacleId):$this->getForm();
@@ -34,6 +38,8 @@ HTML;
 
     public function post(): string
     {
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
 
         $spectacleId = $this->checkGetInput('spectacleId', FILTER_SANITIZE_NUMBER_INT);
         $nom = $this->checkGetInput('nom', FILTER_SANITIZE_SPECIAL_CHARS);

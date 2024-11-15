@@ -2,7 +2,11 @@
 
 namespace Iutnc\Nrv\actions;
 
+use Iutnc\Nrv\auth\AuthProvider;
+use Iutnc\Nrv\auth\Authz;
 use Iutnc\Nrv\classes\Spectacle;
+use Iutnc\Nrv\exceptions\AuthException;
+use Iutnc\Nrv\exceptions\AuthzException;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurLieu;
@@ -37,7 +41,10 @@ HTML;
 
     public function get(): string
     {
-        //TODO AUTHZ
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
+
+
 
         if (isset($_GET["soireeid"])&& $_GET["soireeid"] == filter_var($_GET["soireeid"], FILTER_VALIDATE_INT)) {
             return $this->getForm($_GET['soireeid']);
@@ -48,7 +55,8 @@ HTML;
 
     public function post(): string
     {
-        //TODO AUTHZ
+        $auth = $this->checkAuthzStaff();
+        if ($auth) return $auth;
 
         $titre = $this->checkPostInput('titre', FILTER_SANITIZE_SPECIAL_CHARS);
         $description = $this->checkPostInput('description', FILTER_SANITIZE_SPECIAL_CHARS);

@@ -13,6 +13,10 @@ use PDO;
 
 class NrvRepository
 {
+    public static int $ROLE_ADMIN = 100;
+    public static int $ROLE_USER = 1;
+    public static int $ROLE_STAFF = 5;
+
     private PDO $pdo;
     private static ?NrvRepository $instance;
     private static array $config = [ ];
@@ -225,5 +229,17 @@ WHERE id = $spectacleid
 SQL;
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute();
+    }
+
+    public function getSpectableById(int $spectacleid) : Spectacle|false
+    {
+        $query = "SELECT * FROM spectacle WHERE id = '$spectacleid'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Spectacle::createFromDb($result[0]);
+        }
+        return false;
     }
 }

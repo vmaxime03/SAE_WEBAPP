@@ -2,6 +2,10 @@
 
 namespace Iutnc\Nrv\actions;
 
+use Iutnc\Nrv\auth\Authz;
+use Iutnc\Nrv\exceptions\AuthException;
+use Iutnc\Nrv\exceptions\AuthzException;
+
 abstract class Action {
 
     protected ?string $http_method = null;
@@ -16,14 +20,16 @@ abstract class Action {
     }
 
     public function execute() : string {
+        $myfile = fopen("testfile.txt", "a");
+        fwrite($myfile, "method" . $this->http_method);
         return match ($this->http_method) {
             'GET' => $this->get(),
             'POST' => $this->post()
         };
     }
 
-    abstract public function get() : string;
-    abstract public function post() : string;
+    abstract public function get() : string|null;
+    abstract public function post() : string|null;
 
     protected function checkVar(mixed $var, int $FILTER, array|int $option = null) : mixed {
         if (!isset($var)) {return false;}
@@ -40,5 +46,17 @@ abstract class Action {
 
     protected function checkPostInput(string $name, int $FILTER, array|int $option = null) : mixed {
         return $this->checkVar($_POST[$name], $FILTER, $option);
+    }
+
+    protected function checkAuthzStaff() : string|false
+    {
+        try {
+            Authz::checkRoleStaff();
+        } catch (AuthException $e) {
+            return "Vous n'etes pas connécté";
+        } catch (AuthzException $e) {
+            return "Acces refusé";
+        }
+        return false;
     }
 }

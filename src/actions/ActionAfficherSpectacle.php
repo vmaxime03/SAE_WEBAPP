@@ -13,7 +13,7 @@ class ActionAfficherSpectacle extends Action {
         $instance = NrvRepository::getInstance();
         $html = '';
 
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $id = $this->checkGetInput('id', FILTER_SANITIZE_NUMBER_INT);
         if ($id === null || $id === false) {
             return '<p>Invalid ID</p>';
         }
