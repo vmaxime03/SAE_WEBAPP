@@ -10,12 +10,16 @@ class ActionLogin extends Action
 {
     private string $form = <<<HTML
     <form action="?action=login" method="POST">
-                <input type="email" name="email" placeholder="email">
-                <input type="password" name="passwd" placeholder="mot de passe">
-                <input type="submit" value="Confirmer">
+    <link rel="stylesheet" href="../style.css">
+    <div class="tout">
+        <div class="login">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="password" name="passwd" placeholder="mot de passe">
+                    <input type="submit" value="Confirmer">
+         </div>
+     </div>
     </form>
     HTML;
-
 
 
     public function get(): string
@@ -34,14 +38,14 @@ class ActionLogin extends Action
             $user = AuthProvider::getSignedInUser();
             if ($user->email === $_POST["email"] &&
                 password_verify($_POST['passwd'], $user->passwd)) {
-                return "Vous êtes déjà connecté " . '<br><a href="?action=accueil">Accueil</a>';
+                return "Vous êtes déjà connecté ";
             } else {
                 throw new AuthException();
             }
         } catch (AuthException $e) {
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
-                return "Rebonjour " . $user->email . '<br><a href="?action=accueil">Accueil</a>';
+                return "Rebonjour " . $user->email;
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }

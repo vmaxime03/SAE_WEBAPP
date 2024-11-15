@@ -25,6 +25,7 @@ class ActionAfficherTousSpectacle extends Action
             $image = $instance->getImageByIdSpectacle($spectacle->id);
             $imageRendered = new ImageRenderer($image);
             $html .= "<p>{$imageRendered->render()}</p>";
+            $html .= "<a href=\"?action=afficherUneSoiree&id=" . htmlspecialchars($spectacle->idSoiree) . "\">Afficher la soirée correspondante</a>";
             $html .= "<p>---------------------</p>";
         }
 

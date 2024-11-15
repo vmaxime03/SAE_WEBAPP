@@ -21,7 +21,7 @@ class ActionAfficherSpectacle extends Action {
 
         $spectacles = $instance->getSpectableByIdSoiree($id);
         if (!$spectacles) {
-            return '<p>No spectacles found for this soiree</p>';
+            return '<p>Pas de spectacle dans cette soiree</p>';
         }
 
         foreach ($spectacles as $spectacle) {

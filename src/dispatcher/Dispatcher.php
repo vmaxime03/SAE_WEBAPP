@@ -25,7 +25,7 @@ use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\actions\ActionAfficherSpectacle;
 use Iutnc\Nrv\actions\ActionAfficherTousSpectacle;
-
+use Iutnc\Nrv\actions\ActionAfficherUneSoiree;
 class Dispatcher
 {
     private String $action;
@@ -45,18 +45,9 @@ class Dispatcher
                 <title>NRV</title>
             </head>
             <body>
-                <a href="?action=acceuil"></a>
-                <a href="?action=signup">Creer un compte</a>
-                <a href="?action=login"> Se connecter</a>
-                <a href="?action=accueil"> Accueil</a>
-                <a href="?action=logout"> Se deconnecter</a>
-                <a href="?action=afficherSoirees">Afficher les soirées</a>
-                <a href="?action=creerSoiree"> Creer Soiree</a>
-                <a href="?action=creerSpectacle"> Creer Spectacle</a>
-                <a href="?action=annulerSpectacle"> Annuler Spectacle</a>
-                <a href="?action=afficherPreference"> Afficher liste de preéference</a>
-                <a href="?action=modifierSpectacle">modifier Spectacle</a>
-                <p>http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</p> 
+            <div class="lien">
+                <a href="?action=acceuil">Accueil</a>
+            </div>    
                 $html
             </body>
         </html>
@@ -95,6 +86,8 @@ class Dispatcher
             "AfficherSpectacle" => new ActionAfficherSpectacle(),
 
             "afficherPreference" => new ActionAfficherPreference(),
+            "afficherUneSoiree" => new ActionAfficherUneSoiree(),
+
 
             "modifierSpectacle" => new ActionModifierSpectacle(),
             default => new ActionAccueil()

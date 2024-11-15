@@ -1,8 +1,53 @@
+*{
+    font-family: "Rubik", serif;
+}
 .soiree {
     max-width: fit-content;
     max-height: fit-content;
+
 }
 
+input[type="submit"]{
+    border-radius: 2%;
+    padding: 1%;
+    margin : 0.5% 0.5% 0;
+}
+input[type="submit"]:hover {
+    background-color: chocolate;
+    transition:100ms;
+}
+.connection {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.fonctionnalite {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #000000;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+img{
+    border-radius: 10px;
+}
 .select-container {
     display: flex;
     flex-direction: row;
@@ -24,7 +69,8 @@
 .soirees div{
     background: rgb(0, 255, 255);
     border-radius: 10px;
-    padding: 0.5% 0 0 0.5%;
+    padding: 0.5% 0 0 1%;
+    margin: 1%;
 }
 .selectable {
     transition: 0.5s;
@@ -39,4 +85,80 @@
 
 .selected {
     border: red solid 3px;
+}
+
+.tout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 30%; /* Adjust the width as needed */
+    height: 25%; /* Increase the height */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -150px; /* Adjust the value as needed to move the block up */
+}
+
+.login input[type="email"],
+.login input[type="password"],
+.login input[type="submit"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%; /* Adjust the width as needed */
+}
+
+.login input[type="submit"] {
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 30%; /* Adjust the width as needed */
+    height: 30%; /* Increase the height */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -150px; /* Adjust the value as needed to move the block up */
+}
+
+.signup input[type="email"],
+.signup input[type="password"],
+.signup input[type="submit"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%; /* Adjust the width as needed */
+}
+
+.signup input[type="submit"] {
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+}
+
+.signup input[type="submit"]:hover {
+    background-color: #0056b3;
 }

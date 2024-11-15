@@ -17,14 +17,13 @@ class ActionLogout extends Action
 
             return  <<<HTML
             <form action="?action=logout" method="POST">
-                <input type="submit" value="Se deconecter">
+                <input type="submit" value="Se Déconnecter">
             </form>
             HTML;
 
         } catch (AuthException $e) {
             return <<<HTML
-                <p>No user Conected</p>
-                <a href="?action=s">page par default</a>
+                <p>Pas d'utilisateur connecté </p>
             HTML;
         }
     }
@@ -33,10 +32,7 @@ class ActionLogout extends Action
     {
         session_destroy();
         return <<<HTML
-            <p> user disconected</p>
-            <nav>
-                <a href="?action=s">page par default</a>
-            </nav>
+            <p>Utilisateur déconnecté</p>    
         HTML;
     }
 }
