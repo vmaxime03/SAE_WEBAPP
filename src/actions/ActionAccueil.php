@@ -9,6 +9,7 @@ class ActionAccueil extends Action
 {
     public function get(): string
     {
+
         $htmlUser = <<<HTML
         <form action="?action=accueil" method="POST">
             <link rel="stylesheet" href="../style.css">
