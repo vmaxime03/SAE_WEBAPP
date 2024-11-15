@@ -17,6 +17,14 @@ class ActionSignup extends Action
                 <input type="password" name="passwd" placeholder="mot de passe">
                 <input type="password" name="passwd2" placeholder="confirmer mot de passe">
                 <input type="submit" value="Confirmer">
+                <ul>
+                    <li>Le mot de passe doit contenir au moins :</li>
+                    <li>10 caractères</li>
+                    <li>un chiffre</li>
+                    <li>un caractère spécial</li>
+                    <li>une majuscule</li>
+                    <li>une minuscule</li>
+                </ul>
         </div>        
     </div>
     </form>
