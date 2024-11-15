@@ -56,7 +56,12 @@ class ActionSignup extends Action
             try {
                 AuthProvider::register($_POST['email'], $_POST['passwd']);
                 return "success <br><a href='?action=login'>Se Connecter</a>";
-            } catch (CreateUserException $e) {
+            }
+            catch (AuthException $e) {
+                return $this->form . "erreur mot de passe pas valide";
+            } catch (AuthException $e) {
+            return $this->form . "erreur mot de passe pas valide";
+            }catch (CreateUserException $e) {
                 return $this->form . "Erreur lors de l'enregistrement";
             }
         }

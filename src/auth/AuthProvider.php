@@ -7,9 +7,19 @@ use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\exceptions\CreateUserException;
 use Iutnc\Nrv\repository\NrvRepository;
 
-class AuthProvider
-{
+class AuthProvider{
+
+    public static function checkPasswordStrength(string $pass, int $minimumLength = 10): bool {
+        $length = (strlen($pass) >= $minimumLength);
+        $digit = preg_match("#[\d]#", $pass);
+        $special = preg_match("#[\W]#", $pass);
+        $lower = preg_match("#[a-z]#", $pass);
+        $upper = preg_match("#[A-Z]#", $pass);
+        return $length && $digit && $special && $lower && $upper;
+    }
+
     public static function signin(string $email, string $password) : User {
+
         $repo = NrvRepository::getInstance();
 
         $user = $repo->getUserByEmail($email);
@@ -39,7 +49,10 @@ class AuthProvider
     }
 
 
-    public static function register( string $email, string $pass): void {
+    public static function register( string $email, string $pass): void{
+        if (!self::checkPasswordStrength($pass)) {
+            throw new AuthException();
+        }
         if(!NrvRepository::getInstance()->getUserByEmail($email)){
             $hash = password_hash($pass, PASSWORD_DEFAULT, ['cost'=>12]);
             $user = new User(0, $email, $hash, User::$ROLE_USER);
