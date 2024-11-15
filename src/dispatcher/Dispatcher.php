@@ -38,6 +38,7 @@ class Dispatcher
                 <title>NRV</title>
             </head>
             <body>
+                <a href="?action=accueil"> Accueil</a>
                 <a href="?action=logout"> Se deconnecter</a>
                 <a href="?action=creerSoiree"> Creer Soiree</a>
                 <a href="?action=creerSpectacle"> Creer Spectacle</a>
