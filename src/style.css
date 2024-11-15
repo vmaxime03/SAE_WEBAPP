@@ -6,11 +6,18 @@
     max-height: fit-content;
 
 }
+.soirees div, .spectacles{
+    background: rgb(170, 0, 255);
+    border-radius: 10px;
+    padding: 0.5% 0 0 1%;
+    margin: 1%;
+}
 
 input[type="submit"]{
     border-radius: 2%;
     padding: 1%;
     margin : 0.5% 0.5% 0;
+    cursor: pointer;
 }
 input[type="submit"]:hover {
     background-color: chocolate;
@@ -45,7 +52,7 @@ a {
 a:hover {
     background-color: #0056b3;
 }
-img{
+img, video{
     border-radius: 10px;
 }
 .select-container {
@@ -66,12 +73,7 @@ img{
 }
 
 
-.soirees div{
-    background: rgb(0, 255, 255);
-    border-radius: 10px;
-    padding: 0.5% 0 0 1%;
-    margin: 1%;
-}
+
 .selectable {
     transition: 0.5s;
     cursor: pointer;
@@ -100,13 +102,13 @@ img{
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 30%; /* Adjust the width as needed */
-    height: 25%; /* Increase the height */
+    width: 30%;
+    height: 25%;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: -150px; /* Adjust the value as needed to move the block up */
+    margin-top: -150px;
 }
 
 .login input[type="email"],
@@ -116,7 +118,7 @@ img{
     margin: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%; /* Adjust the width as needed */
+    width: 80%;
 }
 
 .login input[type="submit"] {
@@ -134,13 +136,13 @@ img{
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 30%; /* Adjust the width as needed */
-    height: 30%; /* Increase the height */
+    width: 30%;
+    height: 50%;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: -150px; /* Adjust the value as needed to move the block up */
+    margin-top: -150px;
 }
 
 .signup input[type="email"],
@@ -150,7 +152,7 @@ img{
     margin: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%; /* Adjust the width as needed */
+    width: 80%;
 }
 
 .signup input[type="submit"] {

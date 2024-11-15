@@ -9,6 +9,7 @@ class ActionAccueil extends Action
 {
     public function get(): string
     {
+
         $htmlUser = <<<HTML
         <form action="?action=accueil" method="POST">
             <link rel="stylesheet" href="../style.css">
@@ -38,7 +39,7 @@ HTML;
                     <br>
                     <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>
                     <br>
-                    <a href="?action=afficherPreference"> Afficher liste de préférence</a>
+                    <a href="?action=afficherPreference"> Afficher liste de préférences</a>
                 </div>
             </nav>
         </form>
@@ -53,7 +54,7 @@ HTML;
                 <br>
                 <a href="?action=annulerSpectacle">Annuler un spectacle</a>
                 <br>
-                <a href="?action=modifierSpectacle">Annuler un spectacle</a>
+                <a href="?action=modifierSpectacle">Modifier un spectacle</a>
             </div>
         </nav>
 HTML;
@@ -76,9 +77,13 @@ HTML;
                     </nav>
 HTML;
                     break;
+                default:
+                    $html = $htmlUser;
+                    break;
             }
         } catch (AuthException $e) {
-            $html = $htmlUser;
+            $html= $htmlUser;
+
         }
 
         return $html;

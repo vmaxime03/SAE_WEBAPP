@@ -15,7 +15,7 @@ class ActionAfficherTousSpectacle extends Action
     public function get(): string
     {
         $instance = NrvRepository::getInstance();
-        $html = '';
+        $html = '<div class="spectacles">';
 
         $spectacles = $instance->getAllSpectacle();
         if (!$spectacles) {
@@ -32,7 +32,7 @@ class ActionAfficherTousSpectacle extends Action
             $html .= "<p>---------------------</p>";
         }
 
-        return $html;
+        return $html . "</div>";
     }
 
     public function post(): string
