@@ -15,6 +15,7 @@ use Iutnc\Nrv\actions\ActionCreerSpectacle;
 use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
+use Iutnc\Nrv\actions\ActionModifierSpectacle;
 use Iutnc\Nrv\actions\ActionRetirerPreference;
 use Iutnc\Nrv\actions\ActionSignup;
 use Iutnc\Nrv\actions\ActionAccueil;
@@ -54,7 +55,7 @@ class Dispatcher
                 <a href="?action=creerSpectacle"> Creer Spectacle</a>
                 <a href="?action=annulerSpectacle"> Annuler Spectacle</a>
                 <a href="?action=afficherPreference"> Afficher liste de preéference</a>
-               
+                <a href="?action=modifierSpectacle">modifier Spectacle</a>
                 <p>http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</p> 
                 $html
             </body>
@@ -94,6 +95,8 @@ class Dispatcher
             "AfficherSpectacle" => new ActionAfficherSpectacle(),
 
             "afficherPreference" => new ActionAfficherPreference(),
+
+            "modifierSpectacle" => new ActionModifierSpectacle(),
             default => new ActionAccueil()
         })->execute());
 

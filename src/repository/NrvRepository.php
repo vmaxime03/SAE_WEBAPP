@@ -255,4 +255,19 @@ SQL;
         }
         return false;
     }
+
+    public function updateSpectacle(Spectacle $spectacle) : bool{
+        $query = <<<SQL
+UPDATE spectacle
+SET titre = '$spectacle->titre', description = '$spectacle->description', heure = '$spectacle->heure', 
+    duree = '$spectacle->duree', libelleStyle = '$spectacle->style', video = '$spectacle->videoUrl', 
+    id_soiree = '$spectacle->idSoiree', est_annule = $spectacle->est_annule
+WHERE id = $spectacle->id;
+
+SQL;
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute();
+
+
+    }
 }

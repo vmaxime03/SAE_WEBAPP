@@ -26,11 +26,10 @@ abstract class Action {
         };
     }
 
-    abstract public function get() : string|null;
-    abstract public function post() : string|null;
+    abstract public function get() : string;
+    abstract public function post() : string;
 
     protected function checkVar(mixed $var, int $FILTER, array|int $option = null) : mixed {
-        if (!isset($var)) {return false;}
         if (is_null($option)) {
             $f = filter_var($var, $FILTER);
         } else {
@@ -39,10 +38,12 @@ abstract class Action {
         return  ($var != "" && $var === $f) ? $var : false;
     }
     protected function checkGetInput(string $name, int $FILTER, array|int $option = null) : mixed {
+        if (!isset($_GET[$name])) {return false;}
         return $this->checkVar($_GET[$name], $FILTER, $option);
     }
 
     protected function checkPostInput(string $name, int $FILTER, array|int $option = null) : mixed {
+        if (!isset($_POST[$name])) {return false;}
         return $this->checkVar($_POST[$name], $FILTER, $option);
     }
 
