@@ -9,6 +9,7 @@ class ActionAccueil extends Action
 {
     public function get(): string
     {
+
         $htmlUser = <<<HTML
         <form action="?action=accueil" method="POST">
             <link rel="stylesheet" href="../style.css">
@@ -76,9 +77,13 @@ HTML;
                     </nav>
 HTML;
                     break;
+                default:
+                    $html = $htmlUser;
+                    break;
             }
         } catch (AuthException $e) {
-            $html = $htmlUser;
+            $html= $htmlUser;
+
         }
 
         return $html;
