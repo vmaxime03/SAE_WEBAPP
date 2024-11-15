@@ -4,4 +4,4 @@ EVA Maxence
 DELABORDE Baptiste
 COSSON Alexandre
 VAULTRIN Maxime
-https://webetu.iutnc.univ-lorraine.fr/~vaultrin1u/SAE_WEBAPP/src/main.php
+https://webetu.iutnc.univ-lorraine.fr/www/vaultrin1u/SAE_WEBAPP/src/main.php
