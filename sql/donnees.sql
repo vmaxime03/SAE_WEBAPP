@@ -12,13 +12,13 @@ INSERT INTO Soiree (nom, theme, date, tarif, id_lieu) VALUES
 
 -- Remplissage de la table Spectacle
 INSERT INTO Spectacle (titre, description, heure, duree, libelleStyle, video, id_soiree) VALUES
-                                                                                             ('Rock Legends', 'Hommage aux légendes du rock', '2024-11-15 20:00:00', '3h', 'Rock', 'rock_legends.mp4', 1),
-                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 23:30:00', '2h30', 'Punk', 'punk_vibes.mp4', 1),
+                                                                                             ('Rock Legends', 'Hommage aux légendes du rock', '2024-11-15 20:00:00', '3h', 'Rock', 'https://www.youtube.com/watch?v=v2AC41dglnM', 1),
+                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 23:30:00', '2h30', 'Punk', 'https://www.youtube.com/watch?v=v2AC41dglnM', 1),
 
-                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 21:00:00', '2h30', 'Punk', 'punk_vibes.mp4', 2),
-                                                                                             ('Maxime&Alexandre', 'Soirée slow', '2024-11-19 00:00:00', '1h', 'Romantique', 'slow.mp4', 2),
+                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 21:00:00', '2h30', 'Punk', 'https://www.youtube.com/watch?v=v2AC41dglnM', 2),
+                                                                                             ('Maxime&Alexandre', 'Soirée slow', '2024-11-19 00:00:00', '1h', 'Romantique', 'https://www.youtube.com/watch?v=v2AC41dglnM', 2),
 
-                                                                                             ('Indie Night', 'Soirée rock alternatif', '2024-11-19 20:00:00', '3h', 'Indie Rock', 'indie_night.mp4', 3);
+                                                                                             ('Indie Night', 'Soirée rock alternatif', '2024-11-19 20:00:00', '3h', 'Indie Rock', 'https://www.youtube.com/watch?v=v2AC41dglnM', 3);
 
 -- Remplissage de la table Artiste
 INSERT INTO Artiste (Nom, info) VALUES

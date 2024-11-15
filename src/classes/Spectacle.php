@@ -10,12 +10,12 @@ class Spectacle implements ReadableFromDB, Renderable
     private string $titre;
     private string $description;
     private string $heure;
-    private int $duree;
+    private string $duree;
     private string $style;
     private string $videoUrl;
     private int $idSoiree;
 
-    public function __construct(int $id, string $titre, string $description, string $heure, int $duree, string $style, string $videoUrl, int $idSoiree)
+    public function __construct(int $id, string $titre, string $description, string $heure, string $duree, string $style, string $videoUrl, int $idSoiree)
     {
         $this->id = $id;
         $this->titre = $titre;
