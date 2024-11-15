@@ -10,33 +10,43 @@ class ActionAccueil extends Action
     public function get(): string
     {
         $htmlUser = <<<HTML
-    <form action="?action=accueil" method="POST">
-        <nav>
-            <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
-            <br>
-            <a href="?action=logout"> Se deconnecter</a>
-            <br>
-            <a href="?action=signup">Creer un compte</a>
-            <br>
-            <a href="?action=login"> Se connecter</a>
-            <br>
-            <a href="?action=afficherSoirees">Afficher les soirées</a>
-            <br>
-            <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>
-            <br>
-        </nav>
-    </form>
+        <form action="?action=accueil" method="POST">
+            <link rel="stylesheet" href="../style.css">
+            <nav class="lien">
+                <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
+                <br>
+                <div class="connection">
+                    <a href="?action=logout"> Se déconnecter</a>
+                    <br>
+                    <a href="?action=signup">Créer un compte</a>
+                    <br>
+                    <a href="?action=login"> Se connecter</a>
+                </div>
+                <div class="fonctionnaliter">
+                    <a href="?action=afficherSoirees">Afficher les soirées</a>
+                    <br>
+                    <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>
+                    <br>
+                    <a href="?action=afficherPreference"> Afficher liste de préférence</a>
+                    <br>
+                </div>
+            </nav>
+        </form>
 HTML;
         $htmlStaff = <<<HTML
-            <a href="?action=creerSoiree">créer Soirée</a>
-            <br>
-            <a href="?action=creerSpectacle">créer Spectacle</a>
-            <br>
+        <nav class="lien">
+            <div class="fonctionnaliter">
+                <a href="?action=creerSoiree">Créer Soirée</a>
+                <br>
+                <a href="?action=creerSpectacle">Créer Spectacle</a>
+                <br>
+            </div>
+        </nav>
 HTML;
 
         try {
             $user = AuthProvider::getSignedInUser();
-            switch($user->getRole($user)){
+            switch ($user->getRole($user)) {
                 case 5:
                     $html = $htmlUser;
                     $html .= $htmlStaff;
@@ -45,12 +55,16 @@ HTML;
                     $html = $htmlUser;
                     $html .= $htmlStaff;
                     $html .= <<<HTML
-                    <a href="?action=signup"> Enregistrer un membre du Staff</a>
+                    <nav class="lien">
+                        <div class="fonctionnaliter">
+                            <a href="?action=signup"> Enregistrer un membre du Staff</a>
+                        </div>
+                    </nav>
 HTML;
                     break;
             }
         } catch (AuthException $e) {
-            $html = "vous n'êtes pas connecté <br>" . $htmlUser;
+            $e->getMessage();
         }
 
         return $html;
