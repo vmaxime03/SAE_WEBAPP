@@ -28,7 +28,6 @@ class ActionAccueil extends Action
                     <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>
                     <br>
                     <a href="?action=afficherPreference"> Afficher liste de préférence</a>
-                    <br>
                 </div>
             </nav>
         </form>
@@ -40,6 +39,7 @@ HTML;
                 <br>
                 <a href="?action=creerSpectacle">Créer Spectacle</a>
                 <br>
+                <a href="?action=annulerSpectacle">Annuler un spectacle</a>
             </div>
         </nav>
 HTML;

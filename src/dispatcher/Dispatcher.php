@@ -41,20 +41,13 @@ class Dispatcher
             <head>
                 <link rel="stylesheet" href="style.css">
                 <script src="preference.js"></script>
+                <link rel="stylesheet" href="../style.css">
                 <title>NRV</title>
             </head>
             <body>
-                <a href="?action=acceuil"></a>
-                <a href="?action=signup">Creer un compte</a>
-                <a href="?action=login"> Se connecter</a>
-                <a href="?action=accueil"> Accueil</a>
-                <a href="?action=logout"> Se deconnecter</a>
-                <a href="?action=afficherSoirees">Afficher les soirées</a>
-                <a href="?action=creerSoiree"> Creer Soiree</a>
-                <a href="?action=creerSpectacle"> Creer Spectacle</a>
-                <a href="?action=annulerSpectacle"> Annuler Spectacle</a>
-                <a href="?action=afficherPreference"> Afficher liste de préference</a>
-                
+            <div class="lien">
+                <a href="?action=acceuil">Accueil</a>
+            </div>    
                 $html
             </body>
         </html>
