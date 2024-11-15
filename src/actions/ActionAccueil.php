@@ -9,7 +9,6 @@ class ActionAccueil extends Action
 {
     public function get(): string
     {
-
         $htmlUser = <<<HTML
         <form action="?action=accueil" method="POST">
             <link rel="stylesheet" href="../style.css">
@@ -17,11 +16,22 @@ class ActionAccueil extends Action
                 <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
                 <br>
                 <div class="connection">
+HTML;
+
+        try {
+            $user = AuthProvider::getSignedInUser();
+            $htmlUser .= <<<HTML
                     <a href="?action=logout"> Se déconnecter</a>
-                    <br>
+HTML;
+        } catch (AuthException $e) {
+            $htmlUser .= <<<HTML
                     <a href="?action=signup">Créer un compte</a>
                     <br>
                     <a href="?action=login"> Se connecter</a>
+HTML;
+        }
+
+        $htmlUser .= <<<HTML
                 </div>
                 <div class="fonctionnalite">
                     <a href="?action=afficherSoirees">Afficher les soirées</a>
@@ -33,6 +43,7 @@ class ActionAccueil extends Action
             </nav>
         </form>
 HTML;
+
         $htmlStaff = <<<HTML
         <nav class="lien">
             <div class="fonctionnalite">
