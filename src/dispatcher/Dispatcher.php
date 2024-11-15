@@ -46,7 +46,7 @@ class Dispatcher
             </head>
             <body>
             <div class="lien">
-                <a href="?action=acceuil">Accueil</a>
+                <a href="?action=accueil">Accueil</a>
             </div>    
                 $html
             </body>

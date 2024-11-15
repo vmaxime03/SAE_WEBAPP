@@ -12,7 +12,7 @@ class ActionAfficherSpectacle extends Action {
     public function get(): string
     {
         $instance = NrvRepository::getInstance();
-        $html = '';
+        $html = '<section class="spectacles">';
 
         $id = $this->checkGetInput('id', FILTER_SANITIZE_NUMBER_INT);
         if ($id === null || $id === false) {
@@ -34,7 +34,7 @@ class ActionAfficherSpectacle extends Action {
             $html .= "<p>-------------</p>";
         }
 
-        return $html;
+        return $html . "</section>";
     }
 
     public function post(): string
