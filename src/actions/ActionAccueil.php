@@ -27,8 +27,7 @@ HTML;
             <br>
             <a href="?action=creerSoiree">créer Spectacle</a>
             <br>
-            <a href="?action=creerSpectacle"> Creer Spectacle</a>
-            <br>
+
 HTML;
 
         $user = AuthProvider::getSignedInUser();
