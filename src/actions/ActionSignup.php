@@ -52,7 +52,7 @@ class ActionSignup extends Action
                 return "success <br><a href='?action=login'>Se Connecter</a>";
             }
         } catch (AuthException $e) {
-            // L'utilisateur n'est pas connecté, donc on enregistre un utilisateur normal
+            // L'internaute n'est pas connecté, donc on enregistre un utilisateur
             try {
                 AuthProvider::register($_POST['email'], $_POST['passwd']);
                 return "success <br><a href='?action=login'>Se Connecter</a>";
