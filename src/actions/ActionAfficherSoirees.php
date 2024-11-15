@@ -13,8 +13,7 @@ class ActionAfficherSoirees extends Action
         return <<<HTML
         <form action="?action=afficherSoirees" method="POST">
         <nav>
-            <input type="submit" name="triDateLoin" value="Trier par date de soirée la plus loin"></input>
-            <br>
+            <input type="submit" name="triDateRecente" value="Trier par date de soirée la plus récente"></input>
             <input type="submit" name="triStyleSoiree" value="Trier par style de soirée(A-Z)"></input>
             <br>
         </form>
@@ -54,15 +53,18 @@ HTML;
     {
 
         $html = $this->getForm();
-        $nomtri = filter_var($_POST['triDateLoin']);
-        if (isset($_POST['triDateLoin']) && $nomtri === "Trier par date de soirée la plus loin") {
-            $this->triActif = NrvRepository::$TRI_DATE;
-        } else if (isset($_POST['triStyleSoiree']) && $nomtri === "Trier par style de soirée(A-Z)") {
-            $this->triActif = NrvRepository::$TRI_THEME_SOIREE;
-        } else {
+        if (isset($_POST['triDateRecente'])){
+            $nomtri = filter_var($_POST['triDateRecente']);
+            if ($nomtri = "Trier par date de soirée la plus récente") $this->triActif = NrvRepository::$TRI_DATE;
+            else $this->triActif = NrvRepository::$TRI_DEFAUT;
+
+        }else if (isset($_POST['triStyleSoiree'])) {
+            $nomtri = filter_var($_POST['triStyleSoiree']);
+            if ($nomtri = "Trier par style de soirée(A-Z)") $this->triActif = NrvRepository::$TRI_THEME_SOIREE;
+            else $this->triActif = NrvRepository::$TRI_DEFAUT;
+        }else{
             $this->triActif = NrvRepository::$TRI_DEFAUT;
         }
-
         $html .= $this->affichage();
         return $html;
     }

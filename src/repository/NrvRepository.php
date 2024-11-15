@@ -185,8 +185,8 @@ class NrvRepository
     public function getAllSoiree(int $tri = 0) : array
     {
         $sql = match ($tri) {
-            self::$TRI_THEME_SOIREE =>  "SELECT * FROM soiree ORDER BY soiree.theme DESC;",
-            self::$TRI_DATE => "SELECT * FROM soiree ORDER BY soiree.date DESC;",
+            self::$TRI_THEME_SOIREE =>  "SELECT * FROM soiree ORDER BY soiree.theme;",
+            self::$TRI_DATE => "SELECT * FROM soiree ORDER BY soiree.date;",
             default => "SELECT * FROM soiree",
         };
         $stmt = $this->pdo->prepare($sql);
