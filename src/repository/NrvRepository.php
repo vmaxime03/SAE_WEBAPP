@@ -20,6 +20,7 @@ class NrvRepository
     public static int $TRI_DEFAUT = 0;
     public static int $TRI_DATE = 1;
     public static int $TRI_THEME_SOIREE = 2;
+    public static int $TRI_LIEU = 3;
 
 
     private function __construct(array $config) {
@@ -204,6 +205,7 @@ class NrvRepository
     public function getAllSoiree(int $tri = 0) : array
     {
         $sql = match ($tri) {
+            self::$TRI_LIEU => "SELECT soiree.id, soiree.nom, soiree.theme, soiree.date, soiree.tarif, soiree.id_lieu FROM soiree, lieu WHERE soiree.id_lieu = lieu.id ORDER BY lieu.nom;;",
             self::$TRI_THEME_SOIREE =>  "SELECT * FROM soiree ORDER BY soiree.theme;",
             self::$TRI_DATE => "SELECT * FROM soiree ORDER BY soiree.date;",
             default => "SELECT * FROM soiree",
