@@ -15,7 +15,7 @@ class ActionAccueil extends Action
             <link rel="stylesheet" href="../style.css">
             <nav class="lien">
                 <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
-                <br>
+                <br>    
                 <div class="connection">
 HTML;
 
@@ -54,7 +54,7 @@ HTML;
                 <br>
                 <a href="?action=annulerSpectacle">Annuler un spectacle</a>
                 <br>
-                <a href="?action=modifierSpectacle">Annuler un spectacle</a>
+                <a href="?action=modifierSpectacle">Modifier un spectacle</a>
             </div>
         </nav>
 HTML;

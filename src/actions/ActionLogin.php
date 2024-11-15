@@ -6,6 +6,10 @@ use Iutnc\Nrv\auth\AuthProvider;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\classes\User;
 
+/**
+ * action login
+ * voir Authprovider pour les details
+ */
 class ActionLogin extends Action
 {
     private string $form = <<<HTML

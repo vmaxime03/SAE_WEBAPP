@@ -6,6 +6,9 @@ use Iutnc\Nrv\auth\AuthProvider;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\renderer\RendererFactory;
 
+/**
+ * deconnecte l'utilisateur (supprime la session)
+ */
 class ActionLogout extends Action
 {
 

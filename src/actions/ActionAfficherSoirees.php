@@ -5,6 +5,9 @@ namespace Iutnc\Nrv\actions;
 use Iutnc\Nrv\renderer\ImageRenderer;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * Affichage des soirees en focntion du tri choisi
+ */
 class ActionAfficherSoirees extends Action
 {
     private int $triActif = 0;

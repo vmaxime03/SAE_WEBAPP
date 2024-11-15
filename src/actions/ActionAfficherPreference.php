@@ -5,6 +5,9 @@ namespace Iutnc\Nrv\actions;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * affichage des preférence stockée en session
+ */
 class ActionAfficherPreference extends Action
 {
     public function get(): string

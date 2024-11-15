@@ -7,6 +7,9 @@ use Iutnc\Nrv\renderer\ImageRenderer;
 use Iutnc\Nrv\renderer\SpectacleRenderer;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * Affiche tous les spectacles
+ */
 class ActionAfficherTousSpectacle extends Action
 {
     public function get(): string

@@ -7,6 +7,10 @@ use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\repository\NrvRepository;
 use Iutnc\Nrv\selectioneur\SelectioneurSpectacle;
 
+/**
+ * Liste les spectacles pour choisir celui a annuler,
+ * ce referer a la classe Selectionneur pour comprendre le formulaire
+ */
 class ActionAnnulerSpectacle extends Action
 {
 

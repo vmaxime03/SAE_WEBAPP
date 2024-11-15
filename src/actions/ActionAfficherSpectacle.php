@@ -7,6 +7,9 @@ use Iutnc\Nrv\renderer\ImageRenderer;
 use Iutnc\Nrv\renderer\SpectacleRenderer;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * Affiche les spectacle d'un soirée donnée
+ */
 class ActionAfficherSpectacle extends Action {
 
     public function get(): string

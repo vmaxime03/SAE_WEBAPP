@@ -8,6 +8,10 @@ use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\renderer\RendererFactory;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/**
+ * creer un image
+ * si la page est apprlée avec un spectacleid dans l'url, l'image creer est ajouter au spectacle
+ */
 class ActionCreerImage extends Action
 {
 

@@ -6,6 +6,10 @@ use Iutnc\Nrv\auth\Authz;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\exceptions\AuthzException;
 
+/**
+ * classe abstraite d'une action, chaque action a deux méthode, get et post pour les deux methode http
+ * ainsi que des methode pour verifier les entrée utilisateur et les permissions
+ */
 abstract class Action {
 
     protected ?string $http_method = null;

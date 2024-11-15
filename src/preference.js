@@ -3,6 +3,7 @@ function handlePreference(source) {
     sendData(url, source.id)
 }
 
+// envoie une requette http POST vers l'action ajouter ou retirer preference
 async function sendData(url, spectacleid) {
     const formData = new FormData();
     formData.append("spectacleid", spectacleid);

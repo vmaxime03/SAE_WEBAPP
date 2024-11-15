@@ -6,6 +6,9 @@ use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\exceptions\AuthzException;
 use Iutnc\Nrv\repository\NrvRepository;
 
+/*
+ * check les roles pour les autorisations
+ */
 class Authz
 {
     public static function checkRole(int $role) : void
