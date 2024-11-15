@@ -34,14 +34,14 @@ class ActionLogin extends Action
             $user = AuthProvider::getSignedInUser();
             if ($user->email === $_POST["email"] &&
                 password_verify($_POST['passwd'], $user->passwd)) {
-                return "Vous êtes déjà connecté " . $user->getRoleUser($user->role);
+                return "Vous êtes déjà connecté " . '<br><a href="?action=accueil">Accueil</a>';
             } else {
                 throw new AuthException();
             }
         } catch (AuthException $e) {
             try {
                 $user = AuthProvider::signin($_POST["email"], $_POST["passwd"]);
-                return "Rebonjour " . $user->email . $user->getRoleUser($user->role);
+                return "Rebonjour " . $user->email . '<br><a href="?action=accueil">Accueil</a>';
             } catch (AuthException $e) {
                 return $this->form . "erreur lors de la connexion";
             }
