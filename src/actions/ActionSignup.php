@@ -19,7 +19,15 @@ class ActionSignup extends Action
 
     public function get(): string
     {
-        return $this->form;
+        try {
+            $user = AuthProvider::getSignedInUser();
+            if ($user->getRole($user)==100) {
+                return "<br>Enregistrer un nouveau membre du staff <br>" . $this->form;
+            }
+        } catch (AuthException $e) {
+            return "<br>Enregistrer un nouveau utilisateur <br>" . $this->form;
+        }
+        return "<br>Enregistrer un nouveau utilisateur <br>" . $this->form;
     }
 
     public function post(): string
@@ -39,7 +47,7 @@ class ActionSignup extends Action
 
         try {
             $user = AuthProvider::getSignedInUser();
-            if ($user->getRole($user)) {
+            if ($user->getRole($user)==100) {
                 AuthProvider::registerStaff($_POST['email'], $_POST['passwd']);
                 return "success <br><a href='?action=login'>Se Connecter</a>";
             }
