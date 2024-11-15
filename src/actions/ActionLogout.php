@@ -24,7 +24,6 @@ class ActionLogout extends Action
         } catch (AuthException $e) {
             return <<<HTML
                 <p>Pas d'utilisateur connecté </p>
-                <a href="?action=s">Page par default</a>
             HTML;
         }
     }
@@ -33,10 +32,7 @@ class ActionLogout extends Action
     {
         session_destroy();
         return <<<HTML
-            <p>Utilisateur déconnecté</p>
-            <nav>
-                <a href="?action=s">Page par default</a>
-            </nav>
+            <p>Utilisateur déconnecté</p>    
         HTML;
     }
 }
