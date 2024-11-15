@@ -141,7 +141,7 @@ class NrvRepository
     public function getSpectableByIdSoiree(int $idSoiree): array
     {
 
-        $stmt = $this->pdo->prepare('SELECT * FROM Spectacle WHERE id_soiree = :idSoiree');
+        $stmt = $this->pdo->prepare('SELECT * FROM spectacle WHERE id_soiree = :idSoiree');
         $stmt->bindParam(':idSoiree', $idSoiree, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
