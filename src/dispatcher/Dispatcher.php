@@ -14,12 +14,12 @@ use Iutnc\Nrv\actions\ActionDefault;
 use Iutnc\Nrv\actions\ActionLogin;
 use Iutnc\Nrv\actions\ActionLogout;
 use Iutnc\Nrv\actions\ActionSignup;
-use Iutnc\Nrv\actions\ActionAccueilUser;
+use Iutnc\Nrv\actions\ActionAccueil;
 use Iutnc\Nrv\actions\ActionAccueilStaff;
 use Iutnc\Nrv\actions\ActionAccueilAdmin;
 use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\exceptions\AuthException;
-
+use Iutnc\Nrv\actions\ActionAfficherSpectacle;
 
 class Dispatcher
 {
@@ -73,6 +73,7 @@ class Dispatcher
 
             "annulerSpectacle" => new ActionAnnulerSpectacle(),
 
+            "AfficherSpectacle" => new ActionAfficherSpectacle(),
             default => new ActionDefault()
         })->execute());
 

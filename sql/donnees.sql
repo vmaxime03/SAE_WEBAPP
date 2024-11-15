@@ -12,13 +12,13 @@ INSERT INTO Soiree (nom, theme, date, tarif, id_lieu) VALUES
 
 -- Remplissage de la table Spectacle
 INSERT INTO Spectacle (titre, description, heure, duree, libelleStyle, video, id_soiree) VALUES
-                                                                                             ('Rock Legends', 'Hommage aux légendes du rock', '2024-11-15 20:00:00', '3h', 'Rock', 'rock_legends.mp4', 1),
-                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 23:30:00', '2h30', 'Punk', 'punk_vibes.mp4', 1),
+                                                                                             ('Rock Legends', 'Hommage aux légendes du rock', '2024-11-15 20:00:00', '3h', 'Rock', 'https://www.youtube.com/watch?v=v2AC41dglnM', 1),
+                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 23:30:00', '2h30', 'Punk', 'https://www.youtube.com/watch?v=v2AC41dglnM', 1),
 
-                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 21:00:00', '2h30', 'Punk', 'punk_vibes.mp4', 2),
-                                                                                             ('Maxime&Alexandre', 'Soirée slow', '2024-11-19 00:00:00', '1h', 'Romantique', 'slow.mp4', 2),
+                                                                                             ('Punk Vibes', 'Concert de punk rock explosif', '2024-11-17 21:00:00', '2h30', 'Punk', 'https://www.youtube.com/watch?v=v2AC41dglnM', 2),
+                                                                                             ('Maxime&Alexandre', 'Soirée slow', '2024-11-19 00:00:00', '1h', 'Romantique', 'https://www.youtube.com/watch?v=v2AC41dglnM', 2),
 
-                                                                                             ('Indie Night', 'Soirée rock alternatif', '2024-11-19 20:00:00', '3h', 'Indie Rock', 'indie_night.mp4', 3);
+                                                                                             ('Indie Night', 'Soirée rock alternatif', '2024-11-19 20:00:00', '3h', 'Indie Rock', 'https://www.youtube.com/watch?v=v2AC41dglnM', 3);
 
 -- Remplissage de la table Artiste
 INSERT INTO Artiste (Nom, info) VALUES
@@ -29,10 +29,11 @@ INSERT INTO Artiste (Nom, info) VALUES
 
 -- Remplissage de la table User
 INSERT INTO User (email, passwd, role) VALUES
-                                           ('user1@mail.com', '0a041b9462caa4a31bac3567e0b6e6fd9100787db2ab433d96f6d178cabfce90', 1),
-                                           ('user2@mail.com', '6025d18fe48abd45168528f18a82e265dd98d421a7084aa09f61b341703901a3', 1),
-                                           ('user3@mail.com', '5860faf02b6bc6222ba5aca523560f0e364ccd8b67bee486fe8bf7c01d492ccb', 1),
-                                           ('admin@mail.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 100);
+                                           ('user1@mail.com', '$2y$12$zuDhMZajE1iNFspnM1dXKuA6klaPsblj2kQWw0IHLqVBMADsZlUbe', 1),
+                                           ('user2@mail.com', '$2y$12$AVI.s1TYweBoptKjCNM7ruYzbt4R1Dwn0Ahh.fGuFjsPdFgtdiAVy', 1),
+                                           ('staff1@mail.com', '$2y$12$/5gRMaEC2nNOylxR8Ka2Dewc9PtTM52MpB2msv.UAnUTgxS5RgGRK', 5),
+                                           ('staff2@mail.com', '$2y$12$ZFedI.35kiKMTaDRN4q48uqfQ8OQuS7QVI25zuOJN0pMlJR57i.pC', 5),
+                                           ('admin@mail.com', '$2y$12$pY3mRVrMS.NqHL0zkwdgZuucfpx4IMHbGp5RoW7ahzSpMMrCiafZu', 100);
 
 
 -- Remplissage de la table Image

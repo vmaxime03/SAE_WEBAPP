@@ -3,6 +3,7 @@
 namespace Iutnc\Nrv\actions;
 
 use Iutnc\Nrv\auth\AuthProvider;
+use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\exceptions\CreateUserException;
 
 class ActionSignup extends Action
@@ -18,8 +19,15 @@ class ActionSignup extends Action
 
     public function get(): string
     {
-        return $this->form;
-
+        try {
+            $user = AuthProvider::getSignedInUser();
+            if ($user->getRole($user)==100) {
+                return "<br>Enregistrer un nouveau membre du staff <br>" . $this->form;
+            }
+        } catch (AuthException $e) {
+            return "<br>Enregistrer un nouveau utilisateur <br>" . $this->form;
+        }
+        return "<br>Enregistrer un nouveau utilisateur <br>" . $this->form;
     }
 
     public function post(): string
@@ -38,11 +46,21 @@ class ActionSignup extends Action
         }
 
         try {
-            AuthProvider::register($_POST['email'], $_POST['passwd']);
-            return "success <br><a href='?action=login'>Se Connecter</a>";
-        } catch (CreateUserException $e) {
-            return $this->form . "Erreur lors de l'enregistrement";
+            $user = AuthProvider::getSignedInUser();
+            if ($user->getRole($user)==100) {
+                AuthProvider::registerStaff($_POST['email'], $_POST['passwd']);
+                return "success <br><a href='?action=login'>Se Connecter</a>";
+            }
+        } catch (AuthException $e) {
+            // L'utilisateur n'est pas connecté, donc on enregistre un utilisateur normal
+            try {
+                AuthProvider::register($_POST['email'], $_POST['passwd']);
+                return "success <br><a href='?action=login'>Se Connecter</a>";
+            } catch (CreateUserException $e) {
+                return $this->form . "Erreur lors de l'enregistrement";
+            }
         }
 
+        return $this->form . "Erreur inconnue";
     }
 }

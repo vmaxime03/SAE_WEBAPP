@@ -21,6 +21,11 @@
 }
 
 
+.soirees div{
+    background: rgb(0, 255, 255);
+    border-radius: 10px;
+    padding: 0.5% 0 0 0.5%;
+}
 .selectable {
     transition: 0.5s;
     cursor: pointer;

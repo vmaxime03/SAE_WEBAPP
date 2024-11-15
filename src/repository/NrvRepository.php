@@ -17,6 +17,11 @@ class NrvRepository
     private static ?NrvRepository $instance;
     private static array $config = [ ];
 
+    public static int $TRI_DEFAUT = 0;
+    public static int $TRI_DATE = 1;
+    public static int $TRI_THEME_SOIREE = 2;
+
+
     private function __construct(array $config) {
         $dsn = "".$config['driver'].":host=".$config['host'].";dbname=".$config['database'];
         $this->pdo = new PDO($dsn, $config['username'], $config['password']);
@@ -105,8 +110,9 @@ class NrvRepository
         return $this->pdo->lastInsertId();
     }
 
-    public function getSoireeById($id) : Soiree|false
+    public function getSoireeById(int $id) : Soiree|false
     {
+
         $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -127,17 +133,15 @@ class NrvRepository
             return false;
         }
     }
-    public function getSpectableByIdSoiree($id_soiree) : Spectacle|false
+    public function getSpectableByIdSoiree(int $idSoiree): array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM spectacle WHERE id_soiree = '$id_soiree'");
+
+        $stmt = $this->pdo->prepare('SELECT * FROM Spectacle WHERE id_soiree = :idSoiree');
+        $stmt->bindParam(':idSoiree', $idSoiree, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-        if ($result && count($result) == 1) {
-            return Spectacle::createFromDb($result[0]);
-        } else {
-            return false;
-        }
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function getImageByIdLieu($idLieu) : Image|false
     {
         $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, lieu2image WHERE image.id = lieu2image.id_image AND lieu2image.id_lieu = '$idLieu'");
@@ -186,9 +190,14 @@ class NrvRepository
         return $r;
     }
 
-    public function getAllSoiree() : array
+    public function getAllSoiree(int $tri = 0) : array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM soiree");
+        $sql = match ($tri) {
+            self::$TRI_THEME_SOIREE =>  "SELECT * FROM soiree ORDER BY soiree.theme;",
+            self::$TRI_DATE => "SELECT * FROM soiree ORDER BY soiree.date;",
+            default => "SELECT * FROM soiree",
+        };
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         $r = array();

@@ -46,21 +46,9 @@ class User implements ReadableFromDB, Renderable
         }
     }
 
-    public function getRoleUser(int $role): string
+    function getRole(User $user): int
     {
-        $html = '';
-        switch ($role) {
-            case "ROLE_ADMIN":
-                $html = "<br><a href='?action=accueilAdmin'>Accueil</a>";
-                break;
-            case "ROLE_STAFF":
-                $html = "<br><a href='?action=accueilStaff'>Accueil</a>";
-                break;
-            default:
-                $html = "<br><a href='?action=accueilUser'>Accueil</a>";
-                break;
-        }
-        return $html;
+        return $user->role;
     }
 
 }
