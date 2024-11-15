@@ -53,13 +53,13 @@ class Dispatcher
                 <a href="?action=creerSoiree"> Creer Soiree</a>
                 <a href="?action=creerSpectacle"> Creer Spectacle</a>
                 <a href="?action=annulerSpectacle"> Annuler Spectacle</a>
-                <a href="?action=afficherPreference"> Afficher liste de preéference</a>
-               
-                <p>http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</p> 
+                <a href="?action=afficherPreference"> Afficher liste de préference</a>
+                
                 $html
             </body>
         </html>
         HTML;
+        //<p>http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</p>
     }
 
     public function run() : void {
