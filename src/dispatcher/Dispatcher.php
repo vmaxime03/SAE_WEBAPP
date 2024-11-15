@@ -24,7 +24,7 @@ use Iutnc\Nrv\classes\Image;
 use Iutnc\Nrv\exceptions\AuthException;
 use Iutnc\Nrv\actions\ActionAfficherSpectacle;
 use Iutnc\Nrv\actions\ActionAfficherTousSpectacle;
-
+use Iutnc\Nrv\actions\ActionAfficherUneSoiree;
 class Dispatcher
 {
     private String $action;
@@ -94,6 +94,8 @@ class Dispatcher
             "AfficherSpectacle" => new ActionAfficherSpectacle(),
 
             "afficherPreference" => new ActionAfficherPreference(),
+            "afficherUneSoiree" => new ActionAfficherUneSoiree(),
+
             default => new ActionAccueil()
         })->execute());
 

@@ -255,4 +255,19 @@ SQL;
         }
         return false;
     }
+
+
+    public function getSoireeByIdSpectacle(int $spectacleid): Soiree|false
+    {
+        $query = "SELECT * FROM Soiree WHERE id = '$spectacleid'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        if ($result && count($result) == 1) {
+            return Soiree::createFromDb($result[0]);
+        }
+        return false;
+    }
+
+
 }
