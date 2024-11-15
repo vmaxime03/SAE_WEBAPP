@@ -20,8 +20,6 @@ abstract class Action {
     }
 
     public function execute() : string {
-        $myfile = fopen("testfile.txt", "a");
-        fwrite($myfile, "method" . $this->http_method);
         return match ($this->http_method) {
             'GET' => $this->get(),
             'POST' => $this->post()
