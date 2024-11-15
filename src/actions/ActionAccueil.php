@@ -16,6 +16,10 @@ class ActionAccueil extends Action
             <br>
             <a href="?action=logout"> Se deconnecter</a>
             <br>
+            <a href="?action=signup">Creer un compte</a>
+            <br>
+            <a href="?action=login"> Se connecter</a>
+            <br>
             <a href="?action=afficherSoirees">Afficher les soirées</a>
             <br>
             <a href="?action=afficherTousSpectacle">Afficher tous les spectacles</a>

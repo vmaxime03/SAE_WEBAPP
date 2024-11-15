@@ -75,7 +75,7 @@ class Dispatcher
             "annulerSpectacle" => new ActionAnnulerSpectacle(),
 
             "AfficherSpectacle" => new ActionAfficherSpectacle(),
-            default => new ActionDefault()
+            default => new ActionAccueil()
         })->execute());
 
 
