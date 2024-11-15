@@ -9,7 +9,7 @@ class ActionAccueil extends Action
 {
     public function get(): string
     {
-        $html = <<<HTML
+        $htmlUser = <<<HTML
     <form action="?action=accueil" method="POST">
         <nav>
             <h1>BIENVENUE SUR LA PAGE ACCUEIL</h1>
@@ -38,9 +38,11 @@ HTML;
             $user = AuthProvider::getSignedInUser();
             switch($user->getRole($user)){
                 case 5:
+                    $html = $htmlUser;
                     $html .= $htmlStaff;
                     break;
                 case 100:
+                    $html = $htmlUser;
                     $html .= $htmlStaff;
                     $html .= <<<HTML
                     <a href="?action=signup"> Enregistrer un membre du Staff</a>
@@ -48,7 +50,7 @@ HTML;
                     break;
             }
         } catch (AuthException $e) {
-            // User is not connected, show default accueil page
+            $html = "vous n'êtes pas connecté <br>" . $htmlUser;
         }
 
         return $html;
