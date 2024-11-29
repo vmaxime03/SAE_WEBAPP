@@ -25,7 +25,7 @@ class ActionAfficherTousSpectacle extends Action
         foreach ($spectacles as $spectacle) {
             $renderedSpectacle = new SpectacleRenderer($spectacle);
             $html .= $renderedSpectacle->render();
-            $image = $instance->getImageByIdSpectacle($spectacle->id);
+            $image = $instance->getImageByIdSpectacle($spectacle->id); //TODO plusieur image
             $imageRendered = new ImageRenderer($image);
             $html .= "<p>{$imageRendered->render()}</p>";
             $html .= "<a href=\"?action=afficherUneSoiree&id=" . htmlspecialchars($spectacle->idSoiree) . "\">Afficher la soirée correspondante</a>";

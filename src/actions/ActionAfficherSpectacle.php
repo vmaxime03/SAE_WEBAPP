@@ -31,7 +31,7 @@ class ActionAfficherSpectacle extends Action {
             $s = new Spectacle($spectacle->id, $spectacle->titre, $spectacle->description, $spectacle->heure, $spectacle->duree, $spectacle->libelleStyle, $spectacle->video, $spectacle->id_soiree);
             $renderedSpectacle = new SpectacleRenderer($s);
             $html .= $renderedSpectacle->render();
-            $image = $instance->getImageByIdSpectacle($s->id);
+            $image = $instance->getImageByIdSpectacle($s->id); //TODO plusieur image
             $imageRendered = new ImageRenderer($image);
             $html .= "<p>{$imageRendered->render()}</p>";
             $html .= "<p>-------------</p>";

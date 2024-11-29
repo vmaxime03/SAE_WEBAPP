@@ -35,7 +35,7 @@ HTML;
         $html .= <<<HTML
 <button type="submit">Ajouter</button>
 </form>
-<a href='?action=creerArtiste&spectacleid=$spectacleId'>ajouter artiste</a>
+<a href='?action=creerArtiste&spectacleid=$spectacleId'>Creer artiste</a>
 HTML;
         return $html;
 

@@ -79,6 +79,7 @@ class Dispatcher
             "ajouterArtiste" => new ActionAjouterArtiste(),
             "creerArtiste" => new ActionCreerArtiste(),
 
+            "ajouterImage" => new ActionCreerImage(),
             "creerImage" => new ActionCreerImage(),
 
             "annulerSpectacle" => new ActionAnnulerSpectacle(),

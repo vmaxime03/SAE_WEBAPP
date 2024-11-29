@@ -26,8 +26,15 @@ class ActionModifierSpectacle extends Action
         $h = date_format(new \DateTimeImmutable($heure), "H:i");
         echo $h;
         $get = $spectacleid == -1 ?"":"&spectacleid=$spectacleid";
+        $form = "";
+        if ($spectacleid != -1) {
+            $form .= <<<HTML
+<a href="?action=ajouterArtiste$get">Ajouter artiste</a>
+<a href="?action=ajouterImage$get">Ajouter Image</a>
+HTML;
+        }
         $checked = $annule?"checked":"";
-        $form = <<<HTML
+        $form .= <<<HTML
     <form action="?action=modifierSpectacle$get" method="POST">
                 <input type="text" name="titre" placeholder="titre" value="$titre"> 
                 <input type="text" name="description" placeholder="description" value="$description"> 

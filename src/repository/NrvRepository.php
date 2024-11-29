@@ -160,6 +160,7 @@ class NrvRepository
     }
     public function getImageByIdSpectacle($idSpectacle) : Image|false
     {
+        //TODO plusieur image
         $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, spectacle2image WHERE image.id = spectacle2image.id_image AND spectacle2image.id_spectacle = '$idSpectacle'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
