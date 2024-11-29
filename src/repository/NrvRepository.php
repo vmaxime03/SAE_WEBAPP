@@ -108,16 +108,14 @@ class NrvRepository
     }
 
     public function addImage(Image $img) : int {
-        $query = "INSERT INTO image (id, filetype, description, data) VALUE (NULL, '$img->filetype', '$img->description', ?)";
+        $query = "INSERT INTO image (id, filetype, description, data) VALUE (NULL, '$img->filetype', '$img->description', '$img->data' )";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(1, $img->filetype);
         $stmt->execute();
         return $this->pdo->lastInsertId();
     }
 
     public function getSoireeById(int $id) : Soiree|false
     {
-
         $stmt = $this->pdo->prepare("SELECT * FROM soiree WHERE id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -152,7 +150,7 @@ class NrvRepository
         $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, lieu2image WHERE image.id = lieu2image.id_image AND lieu2image.id_lieu = '$idLieu'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-        if ($result && count($result) == 1) {
+        if ($result && count($result) >= 1) { //TODO plusieur image
             return Image::createFromDb($result[0]);
         } else {
             return false;
@@ -160,11 +158,11 @@ class NrvRepository
     }
     public function getImageByIdSpectacle($idSpectacle) : Image|false
     {
-        //TODO plusieur image
+
         $stmt = $this->pdo->prepare("SELECT image.id, image.filetype, image.description, image.data FROM image, spectacle2image WHERE image.id = spectacle2image.id_image AND spectacle2image.id_spectacle = '$idSpectacle'");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-        if ($result && count($result) == 1) {
+        if ($result && count($result) >= 1) { //TODO plusieur image
             return Image::createFromDb($result[0]);
         } else {
             return false;
@@ -231,7 +229,7 @@ class NrvRepository
     }
 
     public function linkImageToSpectacle(int $image, int $spectacle) : bool {
-        $stmt = $this->pdo->prepare("INSERT INTO spectacle2image (id_spectacle, id_image) VALUES ($spectacle, $image)");
+        $stmt = $this->pdo->prepare("INSERT INTO spectacle2image (id_spectacle, id_image) VALUES ($spectacle, $image )");
         return $stmt->execute();
     }
 

@@ -16,7 +16,7 @@ class Image implements ReadableFromDB, Renderable
         $this->id = $id;
         $this->filetype = $filetype;
         $this->description = $description;
-        $this->data = $data??"";
+        $this->data = is_null($data)?"":base64_encode($data);
     }
 
     public static function createFromDb(mixed $obj): Image
