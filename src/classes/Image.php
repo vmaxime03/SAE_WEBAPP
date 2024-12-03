@@ -11,12 +11,12 @@ class Image implements ReadableFromDB, Renderable
     private string $description;
     private string $data;
 
-    public function __construct(int $id, string $filetype, string $description, string|null $data)
+    public function __construct(int $id, string $filetype, string $description, string $data)
     {
         $this->id = $id;
         $this->filetype = $filetype;
         $this->description = $description;
-        $this->data = is_null($data)?"":base64_encode($data);
+        $this->data = $data;
     }
 
     public static function createFromDb(mixed $obj): Image

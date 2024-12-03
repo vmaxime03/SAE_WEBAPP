@@ -62,7 +62,7 @@ HTML;
             return $this->getForm() . "erreur fichier";
         }
 
-        $imgdata = file_get_contents($_FILES['image']['tmp_name']);
+        $imgdata = base64_encode(file_get_contents($_FILES['image']['tmp_name']));
 
         $img = new Image(-1, $_FILES['image']['type'], $description, $imgdata);
 
